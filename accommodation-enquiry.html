@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accommodation Enquiry | Victoria Falls Transporters</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="enquiry-page">
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html#home" aria-label="Victoria Falls Transporters home">
+                    <img src="images/logo.png" alt="Victoria Falls Transporters Africana Tours logo">
+                    <span class="logo-text">
+                        <span class="logo-title">Victoria Falls <br> Transporters</span>
+                        <span class="logo-subtitle" style="align-items: center;">Africana Tours</span>
+                    </span>
+                </a>
+            </div>
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#accommodation">Accommodation</a></li>
+                <li><a href="index.html#popular-services">Services</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="enquiry-hero">
+            <div class="container">
+                <div class="enquiry-hero-layout">
+                    <div class="enquiry-hero-copy">
+                        <p class="eyebrow">Accommodation Enquiry</p>
+                        <h1>Share your stay details and let us prepare the right room for you.</h1>
+                        <p>From comfortable standard stays to an unforgettable Presidential Suite experience, we are ready to help you arrange accommodation that matches your travel style, dates, and comfort preferences.</p>
+                        <div class="enquiry-hero-actions">
+                            <a href="index.html#accommodation" class="btn">View Rooms Again</a>
+                        </div>
+                    </div>
+                    <aside class="enquiry-spotlight">
+                        <p class="spotlight-label">Selected room</p>
+                        <h2 data-selected-room>Choose your preferred room</h2>
+                        <p>Your selected room will appear here automatically when you click from the accommodation section.</p>
+                        <div class="spotlight-tags">
+                            <span>Fast response</span>
+                            <span>Tailored recommendations</span>
+                            <span>Comfort-first planning</span>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="enquiry-form-section">
+            <div class="container">
+                <div class="enquiry-shell">
+                    <div class="enquiry-aside">
+                        <div class="enquiry-panel">
+                            <h3>What happens next</h3>
+                            <p>Once you submit your enquiry, our team will review your preferred room type, stay dates, and guest details so we can respond with the best available accommodation options.</p>
+                            <div class="journey-steps">
+                                <div class="journey-step">
+                                    <strong>1. We review your request</strong>
+                                    <p>We check the stay details and room preference you submit.</p>
+                                </div>
+                                <div class="journey-step">
+                                    <strong>2. We prepare suitable options</strong>
+                                    <p>Our team matches your request to the most fitting accommodation choice.</p>
+                                </div>
+                                <div class="journey-step">
+                                    <strong>3. We contact you directly</strong>
+                                    <p>You receive follow-up guidance to confirm the next steps for your stay.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="enquiry-panel enquiry-panel-accent">
+                            <h3>Helpful information to include</h3>
+                            <p>Accurate travel dates, guest numbers, and special requests help us guide you faster.</p>
+                            <p>If you need airport pickup, a special celebration setup, or family-friendly room arrangements, add it in the notes section.</p>
+                        </div>
+                    </div>
+
+                    <div class="enquiry-form-card enquiry-form-page-card">
+                        <p class="eyebrow">Guest Details</p>
+                        <h2>Accommodation enquiry form</h2>
+                        <p>Complete the form below and our team will get in touch with the right accommodation details for your stay.</p>
+                        <form id="enquiryForm" data-success-message="Thank you for your accommodation enquiry. Our team will contact you shortly with the next steps.">
+                            <div class="form-grid">
+                                <label class="field">       
+                                    <span>Full name</span>
+                                    <input type="text" name="full_name" placeholder="Enter your full name" required>
+                                </label>
+                                <label class="field">
+                                    <span>Email address</span>
+                                    <input type="email" name="email" placeholder="Enter your email" required>
+                                </label>
+                                <label class="field">
+                                    <span>Phone or WhatsApp</span>
+                                    <input type="tel" name="phone" placeholder="Enter your phone number" required>
+                                </label>
+                                <label class="field">
+                                    <span>Country of residence</span>
+                                    <input type="text" name="country" placeholder="Where are you travelling from?" required>
+                                </label>
+                                <label class="field">
+                                    <span>Preferred room type</span>
+                                    <select id="roomType" name="room_type" required>
+                                        <option value="">Select a room type</option>
+                                        <option value="Standard Room">Standard Room</option>
+                                        <option value="Deluxe Room">Deluxe Room</option>
+                                        <option value="Executive Room">Executive Room</option>
+                                        <option value="Presidential Suite">Presidential Suite</option>
+                                    </select>
+                                </label>
+                                <label class="field">
+                                    <span>Number of rooms</span>
+                                    <input type="number" name="rooms" min="1" value="1" required>
+                                </label>
+                                <label class="field">
+                                    <span>Check-in date</span>
+                                    <input type="date" id="checkInDate" name="check_in" required>
+                                </label>
+                                <label class="field">
+                                    <span>Check-out date</span>
+                                    <input type="date" id="checkOutDate" name="check_out" required>
+                                </label>
+                                <label class="field">
+                                    <span>Adults</span>
+                                    <input type="number" name="adults" min="1" value="2" required>
+                                </label>
+                                <label class="field">
+                                    <span>Children</span>
+                                    <input type="number" name="children" min="0" value="0">
+                                </label>
+                                <label class="field">
+                                    <span>Board preference</span>
+                                    <select name="board_preference" required>
+                                        <option value="">Select an option</option>
+                                        <option value="Room only">Room only</option>
+                                        <option value="Bed and breakfast">Bed and breakfast</option>
+                                        <option value="Half board">Half board</option>
+                                        <option value="Full board">Full board</option>
+                                    </select>
+                                </label>
+                                <label class="field">
+                                    <span>Airport transfer needed</span>
+                                    <select name="airport_transfer" required>
+                                        <option value="">Select an option</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                        <option value="Maybe">Maybe</option>
+                                    </select>
+                                </label>
+                                <label class="field">
+                                    <span>Preferred contact method</span>
+                                    <select name="contact_method" required>
+                                        <option value="">Select an option</option>
+                                        <option value="Email">Email</option>
+                                        <option value="Phone call">Phone call</option>
+                                        <option value="WhatsApp">WhatsApp</option>
+                                    </select>
+                                </label>
+                                <label class="field">
+                                    <span>Estimated arrival time</span>
+                                    <input type="time" name="arrival_time">
+                                </label>
+                                <label class="field field-full">
+                                    <span>Special requests or notes (optional)</span>
+                                    <textarea name="special_requests" placeholder="Tell us about celebrations, airport pickup, accessibility needs, bed setup, or anything else we should know."></textarea>
+                                </label>
+                            </div>
+                            <button type="submit" class="btn">Send Accommodation Enquiry</button>
+                            <p class="form-feedback" aria-live="polite"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Victoria Falls Transporters. All rights reserved.</p>
+    </footer>
+<script src="js/script.js"></script>
+<script src="js/enquiry.js"></script>
+
+</body>
+</html>

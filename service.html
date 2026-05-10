@@ -3,780 +3,1291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Victoria Falls Transporters | Africana Tours</title>
+    <title>Service Planner | Victoria Falls Transporters</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            background-image: url("../images/backg.png");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-        
-        header {
-            background-color: #1a5f3f;
-            color: white;
-            padding: 18px 20px;
+        .service-page {
+            background:
+                radial-gradient(circle at top left, rgba(251, 160, 34, 0.16), transparent 24%),
+                radial-gradient(circle at top right, rgba(126, 201, 234, 0.2), transparent 22%),
+                linear-gradient(180deg, #eef8fb 0%, #fff8ee 54%, #edf7f8 100%);
         }
 
-        .brand-bar {
-            max-width: 1200px;
-            margin: 0 auto;
+        .service-page section {
+            opacity: 1;
+            transform: none;
+        }
+
+        .service-hero {
+            margin-top: 82px;
+            padding-bottom: 56px;
+            background:
+                linear-gradient(118deg, rgba(2, 31, 53, 0.95) 0%, rgba(6, 64, 92, 0.9) 48%, rgba(12, 109, 125, 0.78) 100%),
+                radial-gradient(circle at top right, rgba(251, 160, 34, 0.24), transparent 28%);
+            color: var(--mist-100);
+        }
+
+        .service-hero-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.12fr) minmax(300px, 0.88fr);
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .service-hero-copy h1 {
+            font-size: clamp(3rem, 5.2vw, 5.1rem);
+            color: var(--mist-100);
+            margin-bottom: 1rem;
+        }
+
+        .service-hero-copy p {
+            color: rgba(245, 247, 241, 0.88);
+            max-width: 640px;
+            font-size: 1.08rem;
+        }
+
+        .service-hero-actions {
             display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .ghost-btn {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            text-align: left;
-        }
-
-        .brand-bar img {
-            width: 84px;
-            height: 84px;
-            object-fit: contain;
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.92);
-            padding: 6px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-        }
-
-        .brand-copy h1 {
-            margin: 0;
-            font-size: 2rem;
-        }
-
-        .brand-copy p {
-            margin: 4px 0 0;
-            font-size: 0.95rem;
-            letter-spacing: 0.08em;
+            padding: 14px 28px;
+            border-radius: 999px;
+            border: 1px solid rgba(205, 235, 246, 0.28);
+            color: var(--mist-100);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 0.04em;
             text-transform: uppercase;
-            opacity: 0.92;
+            background: rgba(248, 251, 251, 0.08);
+            box-shadow: 0 16px 32px rgba(2, 20, 35, 0.18);
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+        .ghost-btn:hover,
+        .ghost-btn:focus-visible {
+            transform: translateY(-3px);
+            background: rgba(248, 251, 251, 0.14);
         }
-        
+
+        .planner-spotlight {
+            padding: 2rem;
+            border-radius: 28px;
+            background: linear-gradient(180deg, rgba(252, 254, 255, 0.16) 0%, rgba(255, 255, 255, 0.1) 100%);
+            border: 1px solid rgba(205, 235, 246, 0.2);
+            box-shadow: 0 20px 38px rgba(2, 20, 35, 0.22);
+            backdrop-filter: blur(14px);
+        }
+
+        .spotlight-label {
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #ffd46a;
+            margin-bottom: 0.75rem;
+        }
+
+        .planner-spotlight h2 {
+            text-align: left;
+            color: var(--mist-100);
+            font-size: clamp(2.1rem, 4vw, 3rem);
+            margin-bottom: 0.8rem;
+        }
+
+        .planner-spotlight p {
+            color: rgba(245, 247, 241, 0.84);
+        }
+
+        .guest-counter {
+            display: flex;
+            align-items: stretch;
+            gap: 0.85rem;
+            margin: 1.6rem 0 1.4rem;
+        }
+
+        .counter-btn {
+            width: 54px;
+            border: none;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.14);
+            color: var(--mist-100);
+            font-size: 1.6rem;
+            cursor: pointer;
+            box-shadow: 0 12px 24px rgba(2, 20, 35, 0.16);
+        }
+
+        .counter-btn:hover,
+        .counter-btn:focus-visible {
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        .counter-field {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 0.95rem 1rem;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(205, 235, 246, 0.18);
+        }
+
+        .counter-field span {
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #ffd46a;
+        }
+
+        .counter-field input {
+            padding: 0;
+            border: none;
+            background: transparent;
+            color: var(--mist-100);
+            font-size: 2.1rem;
+            font-weight: 700;
+            box-shadow: none;
+        }
+
+        .counter-field input:focus {
+            box-shadow: none;
+        }
+
+        .spotlight-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .spotlight-tags span {
+            padding: 0.55rem 0.9rem;
+            border-radius: 999px;
+            background: rgba(248, 251, 251, 0.14);
+            border: 1px solid rgba(205, 235, 246, 0.18);
+            color: var(--mist-100);
+            font-size: 0.86rem;
+            font-weight: 600;
+        }
+
+        .service-planner-section {
+            padding-top: 26px;
+        }
+
+        .planner-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.9fr) minmax(280px, 0.62fr);
+            gap: 1.9rem;
+            align-items: start;
+        }
+
+        .planner-main,
+        .summary-card {
+            background: rgba(255, 255, 255, 0.86);
+            border: 1px solid rgba(2, 43, 71, 0.08);
+            border-radius: 28px;
+            box-shadow: 0 20px 38px rgba(2, 31, 53, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .planner-main {
+            padding: 2rem;
+        }
+
+        .planner-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.6rem;
+        }
+
+        .planner-toolbar h2 {
+            text-align: left;
+            margin-bottom: 0;
+            font-size: clamp(2.4rem, 4vw, 3.6rem);
+        }
+
+        .planner-note {
+            max-width: 320px;
+            padding: 0.95rem 1rem;
+            border-radius: 18px;
+            background: linear-gradient(180deg, rgba(255, 247, 235, 0.94) 0%, rgba(243, 251, 254, 0.98) 100%);
+            border: 1px solid rgba(2, 43, 71, 0.08);
+            color: var(--text-700);
+            font-size: 0.95rem;
+        }
+
+        .planner-toolbar-meta {
+            display: flex;
+            align-items: stretch;
+            justify-content: flex-end;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-left: auto;
+        }
+
+        .planner-visitor-panel {
+            min-width: 250px;
+            padding: 1rem 1.05rem;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(2, 43, 71, 0.98) 0%, rgba(12, 109, 125, 0.92) 100%);
+            box-shadow: 0 18px 30px rgba(2, 31, 53, 0.16);
+            color: var(--mist-100);
+        }
+
+        .planner-visitor-label {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #ffd46a;
+            margin-bottom: 0.4rem;
+        }
+
+        .planner-visitor-panel strong {
+            display: block;
+            font-size: 1.25rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .planner-visitor-counter {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+
+        .counter-btn-soft {
+            background: rgba(255, 255, 255, 0.16);
+            border: 1px solid rgba(205, 235, 246, 0.18);
+        }
+
+        .counter-btn-soft:hover,
+        .counter-btn-soft:focus-visible {
+            background: rgba(255, 255, 255, 0.26);
+        }
+
+        .planner-visitor-input {
+            width: 92px;
+            min-height: 54px;
+            padding: 0.75rem 0.8rem;
+            border: 1px solid rgba(205, 235, 246, 0.24);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.96);
+            color: var(--midnight-900);
+            font-size: 1.6rem;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .planner-visitor-input:focus {
+            border-color: rgba(251, 160, 34, 0.75);
+            box-shadow: 0 0 0 3px rgba(251, 160, 34, 0.18);
+            outline: none;
+        }
+
+        .planner-visitor-input::-webkit-outer-spin-button,
+        .planner-visitor-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .planner-visitor-input {
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+
+        .planner-visitor-hint {
+            margin: 0.7rem 0 0;
+            color: rgba(245, 247, 241, 0.8);
+            font-size: 0.88rem;
+        }
+
+        .transfer-panel {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(280px, 0.92fr);
+            gap: 1rem;
+            padding: 1.45rem;
+            margin-bottom: 1.6rem;
+            border-radius: 24px;
+            background: linear-gradient(180deg, rgba(236, 247, 249, 0.9) 0%, rgba(255, 247, 235, 0.92) 100%);
+            border: 1px solid rgba(2, 43, 71, 0.08);
+        }
+
+        .transfer-panel h3 {
+            font-size: 2.2rem;
+            color: var(--midnight-900);
+            margin-bottom: 0.65rem;
+        }
+
+        .transfer-panel p {
+            margin: 0;
+        }
+
         .tab-buttons {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 0.85rem;
             flex-wrap: wrap;
-            border-bottom: 2px solid #ddd;
+            margin-bottom: 1.5rem;
         }
-        
+
         .tab-btn {
-            padding: 12px 20px;
-            background-color: #f0f0f0;
-            border: none;
+            padding: 0.9rem 1.2rem;
+            border-radius: 999px;
+            border: 1px solid rgba(2, 43, 71, 0.12);
+            background: rgba(237, 246, 248, 0.95);
+            color: var(--midnight-900);
             cursor: pointer;
-            font-size: 16px;
-            border-radius: 4px 4px 0 0;
-            transition: background-color 0.3s;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
         }
-        
-        .tab-btn.active {
-            background-color: #1a5f3f;
-            color: white;
+
+        .tab-btn.active,
+        .tab-btn:hover,
+        .tab-btn:focus-visible {
+            color: var(--mist-100);
+            background: linear-gradient(135deg, rgba(2, 43, 71, 0.96) 0%, rgba(12, 109, 125, 0.9) 100%);
+            border-color: transparent;
+            box-shadow: 0 14px 26px rgba(2, 31, 53, 0.16);
         }
-        
-        .tab-btn:hover {
-            background-color: #16a34a;
-            color: white;
-        }
-        
+
         .tab-content {
             display: none;
         }
-        
+
         .tab-content.active {
             display: block;
         }
-        
-        .section {
-            margin-bottom: 30px;
-        }
-        
+
         .section-heading {
-            font-size: 24px;
-            font-weight: bold;
-            color: #1a5f3f;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #1a5f3f;
-            padding-bottom: 10px;
-        }
-        
-        .sub-section {
-            margin-left: 20px;
-            margin-bottom: 20px;
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-left: 4px solid #16a34a;
-            border-radius: 4px;
-        }
-        
-        .sub-heading {
-            font-size: 18px;
-            font-weight: bold;
-            color: #16a34a;
-            margin-bottom: 10px;
-        }
-        
-        .service-item {
-            display: flex;
-            align-items: center;
-            padding: 12px 10px;
-            border-bottom: 1px solid #eee;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            margin-bottom: 1.2rem;
+            color: var(--midnight-900);
+            font-size: 2rem;
         }
 
-        .service-item:last-child {
-            border-bottom: none;
+        .sub-section {
+            margin-bottom: 1.25rem;
+            padding: 1.25rem;
+            border-radius: 22px;
+            background: linear-gradient(180deg, rgba(248, 251, 251, 0.98) 0%, rgba(237, 246, 248, 0.92) 100%);
+            border: 1px solid rgba(2, 43, 71, 0.08);
+        }
+
+        .sub-heading {
+            font-size: 1.5rem;
+            color: var(--midnight-900);
+            margin-bottom: 0.75rem;
+        }
+
+        .sub-section > p {
+            margin-bottom: 0.85rem;
+        }
+
+        .service-item {
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.05rem;
+            border: 1px solid transparent;
+            border-radius: 18px;
+            cursor: pointer;
+            transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base), background-color var(--transition-base);
+        }
+
+        .service-item + .service-item {
+            margin-top: 0.8rem;
         }
 
         .service-item:hover {
-            background-color: #f1f7f4;
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 14px 24px rgba(2, 31, 53, 0.08);
         }
 
         .service-item.selected {
-            background-color: #e6f3eb;
-            border-bottom-color: #1a5f3f;
-            box-shadow: 0 0 0 1px #1a5f3f inset;
+            background: linear-gradient(180deg, rgba(255, 247, 235, 0.98) 0%, rgba(243, 251, 254, 0.96) 100%);
+            border-color: rgba(251, 160, 34, 0.34);
+            box-shadow: 0 18px 30px rgba(2, 31, 53, 0.12);
         }
-        
+
         .service-item input[type="checkbox"] {
-            margin-right: 15px;
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
+            accent-color: var(--sun-500);
             cursor: pointer;
         }
-        
-        .service-info {
-            flex: 1;
-        }
-        
+
         .service-name {
-            font-weight: bold;
-            margin-bottom: 3px;
+            font-weight: 700;
+            color: var(--midnight-900);
+            margin-bottom: 0.2rem;
         }
-        
+
         .service-note {
-            font-size: 12px;
-            color: #666;
+            font-size: 0.92rem;
+            color: var(--text-500);
         }
-        
+
         .service-price {
-            font-weight: bold;
-            color: #1a5f3f;
-            min-width: 120px;
             text-align: right;
-        }
-        
-        .initial-tab {
-            background-color: #e8f5e9;
-            padding: 20px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-        }
-        
-        .initial-tab .sub-heading {
-            color: #1a5f3f;
-        }
-        
-        .booking-section {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 2px solid #ddd;
+            font-weight: 700;
+            color: var(--teal-700);
+            white-space: nowrap;
         }
 
-        .booking-summary {
-            margin-top: 32px;
-            background: linear-gradient(135deg, #f4fbf6, #ebf5ee);
-            border: 1px solid #cfe7d8;
-            border-radius: 14px;
-            padding: 24px;
-            box-shadow: 0 10px 24px rgba(26, 95, 63, 0.08);
+        .summary-card {
+            position: sticky;
+            top: 112px;
+            padding: 1.7rem;
         }
 
-        .summary-header {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 16px;
-            margin-bottom: 18px;
-            flex-wrap: wrap;
+        .summary-card h3 {
+            font-size: 2rem;
+            color: var(--midnight-900);
+            margin-bottom: 1rem;
         }
 
-        .summary-header h2 {
-            color: #1a5f3f;
-            font-size: 1.5rem;
-            margin-bottom: 6px;
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.8rem;
+            margin-bottom: 1rem;
         }
 
-        .summary-header p {
-            color: #557264;
-            max-width: 650px;
+        .summary-stat {
+            padding: 1rem;
+            border-radius: 18px;
+            background: linear-gradient(180deg, rgba(236, 247, 249, 0.94) 0%, rgba(255, 247, 235, 0.94) 100%);
+            border: 1px solid rgba(2, 43, 71, 0.08);
         }
 
-        .summary-total {
-            background: #1a5f3f;
-            color: white;
-            padding: 14px 18px;
-            border-radius: 12px;
-            min-width: 180px;
-            text-align: center;
-        }
-
-        .summary-total span {
+        .summary-stat span {
             display: block;
-            font-size: 0.9rem;
-            opacity: 0.9;
+            font-size: 0.76rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold-600);
+            margin-bottom: 0.5rem;
         }
 
-        .summary-total strong {
-            display: block;
-            font-size: 1.8rem;
-            margin-top: 4px;
+        .summary-stat strong {
+            font-size: 1.7rem;
+            color: var(--midnight-900);
         }
 
         .summary-list {
             list-style: none;
             display: grid;
-            gap: 12px;
+            gap: 0.85rem;
+            margin: 1.1rem 0 1.2rem;
         }
 
         .summary-item,
         .summary-empty {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            background-color: white;
-            border: 1px solid #dcecdf;
-            border-radius: 10px;
-            padding: 14px 16px;
+            padding: 1rem;
+            border-radius: 18px;
+            background: rgba(248, 251, 251, 0.98);
+            border: 1px solid rgba(2, 43, 71, 0.08);
         }
 
         .summary-empty {
-            justify-content: center;
-            color: #6b7280;
             text-align: center;
+            color: var(--text-500);
+        }
+
+        .summary-item-top,
+        .summary-item-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+
+        .summary-item-top {
+            margin-bottom: 0.35rem;
         }
 
         .summary-item-name {
-            font-weight: bold;
-            color: #234434;
+            font-weight: 700;
+            color: var(--midnight-900);
         }
 
         .summary-item-price {
-            color: #1a5f3f;
-            font-weight: bold;
+            font-weight: 700;
+            color: var(--teal-700);
             white-space: nowrap;
         }
-        
-        .book-btn {
-            background-color: #1a5f3f;
-            color: white;
-            padding: 15px 40px;
-            font-size: 18px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .book-btn:hover {
-            background-color: #16a34a;
+
+        .summary-item-meta {
+            color: var(--text-500);
+            font-size: 0.9rem;
         }
 
-        @media (max-width: 640px) {
-            .brand-bar {
-                text-align: center;
+        .summary-item-total {
+            font-size: 0.95rem;
+            color: var(--text-700);
+        }
+
+        .summary-total {
+            padding: 1.25rem 1.35rem;
+            border-radius: 22px;
+            background: linear-gradient(135deg, rgba(2, 43, 71, 0.98) 0%, rgba(12, 109, 125, 0.92) 100%);
+            color: var(--mist-100);
+            box-shadow: 0 18px 30px rgba(2, 31, 53, 0.18);
+        }
+
+        .summary-total span {
+            display: block;
+            font-size: 0.84rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            opacity: 0.82;
+            margin-bottom: 0.45rem;
+        }
+
+        .summary-total strong {
+            font-size: 2rem;
+        }
+
+        .summary-note {
+            margin-top: 1rem;
+            color: var(--text-700);
+            font-size: 0.94rem;
+            line-height: 1.7;
+        }
+
+        .summary-actions {
+            display: grid;
+            gap: 0.8rem;
+            margin-top: 1.35rem;
+        }
+
+        .summary-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+            padding: 0.9rem 1.1rem;
+            border-radius: 999px;
+            border: 1px solid rgba(2, 43, 71, 0.12);
+            background: rgba(237, 246, 248, 0.9);
+            color: var(--midnight-900);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .summary-link:hover,
+        .summary-link:focus-visible {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 24px rgba(2, 31, 53, 0.1);
+        }
+
+        .book-btn {
+            border: none;
+            border-radius: 999px;
+            padding: 0.95rem 1.1rem;
+            font-size: 0.98rem;
+            cursor: pointer;
+        }
+
+        .page-footer {
+            padding-top: 26px;
+        }
+
+        @media (max-width: 980px) {
+            .service-hero-layout,
+            .planner-layout,
+            .transfer-panel {
+                grid-template-columns: 1fr;
             }
 
-            .brand-copy h1 {
-                font-size: 1.6rem;
+            .summary-card {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .service-hero {
+                margin-top: 116px;
+            }
+
+            .service-hero-actions,
+            .guest-counter,
+            .planner-toolbar-meta,
+            .planner-visitor-counter,
+            .summary-item-top,
+            .summary-item-bottom {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .counter-btn {
+                width: 100%;
+                min-height: 52px;
+            }
+
+            .planner-note {
+                max-width: none;
+            }
+
+            .planner-visitor-input {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .service-hero {
+                margin-top: 140px;
+            }
+
+            .planner-main,
+            .summary-card {
+                padding: 1.35rem;
+            }
+
+            .service-item {
+                grid-template-columns: auto minmax(0, 1fr);
+            }
+
+            .service-price {
+                grid-column: 2;
+                text-align: left;
+            }
+
+            .summary-stats {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
-<body>
+<body class="service-page">
     <header>
-        <div class="brand-bar">
-            <img src="images/logo.png" alt="Victoria Falls Africana Tours logo">
-            <div class="brand-copy">
-                <h1>Victoria Falls Transporters</h1>
-                <p>Africana Tours</p>
+        <nav>
+            <div class="logo">
+                <a href="index.html#home" aria-label="Victoria Falls Transporters home">
+                    <img src="images/logo.png" alt="Victoria Falls Transporters Africana Tours logo">
+                    <span class="logo-text">
+                        <span class="logo-title">Victoria Falls <br>Transporters</span>
+                        <span class="logo-subtitle">Africana Tours</span>
+                    </span>
+                </a>
             </div>
-        </div>
-    </header>
-    
-    <div class="container">
-        <!-- Initial Booking Tab -->
-        <div id="initial-section" class="initial-tab">
-            <div class="section">
-                <div class="sub-heading">Airport to Hotel Transfer</div>
-                <div class="service-item selectable">
-                    <input type="checkbox" class="service-checkbox" data-price="10" data-name="Airport to Hotel Transfer">
-                    <div class="service-info">
-                        <div class="service-name">Airport to Hotel Transfer</div>
-                    </div>
-                    <div class="service-price">US$10</div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Main Tabs -->
-        <div class="tab-buttons">
-            <button class="tab-btn active" onclick="openTab(event, 'adventurous')">Adventurous Activities</button>
-            <button class="tab-btn" onclick="openTab(event, 'experiential')">Experiential Tours</button>
-            <button class="tab-btn" onclick="openTab(event, 'exploration')">Exploration Tours</button>
-        </div>
-        
-        <!-- Adventurous Activities Tab -->
-        <div id="adventurous" class="tab-content active">
-            <div class="section">
-                <div class="section-heading">Adventurous Activities</div>
-                
-                <!-- Bridge Activities -->
-                <div class="sub-section">
-                    <div class="sub-heading">Bridge Activities</div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="194" data-name="BUNGEE JUMPING">
-                        <div class="service-info">
-                            <div class="service-name">BUNGEE JUMPING</div>
-                        </div>
-                        <div class="service-price">US$194</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="58" data-name="BRIDGE SLIDE/ ZIPLINE">
-                        <div class="service-info">
-                            <div class="service-name">BRIDGE SLIDE/ZIPLINE</div>
-                        </div>
-                        <div class="service-price">US$58</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="82" data-name="TANDEM BRIDGE SLIDE/ ZIPLINE">
-                        <div class="service-info">
-                            <div class="service-name">TANDEM BRIDGE SLIDE/ZIPLINE</div>
-                        </div>
-                        <div class="service-price">US$82</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="131" data-name="BRIDGE SWING">
-                        <div class="service-info">
-                            <div class="service-name">BRIDGE SWING</div>
-                        </div>
-                        <div class="service-price">US$131</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="201" data-name="TANDEM BRIDGE SWING">
-                        <div class="service-info">
-                            <div class="service-name">TANDEM BRIDGE SWING</div>
-                        </div>
-                        <div class="service-price">US$201</div>
-                    </div>
-                </div>
-                
-                <!-- Shearwater Rafting -->
-                <div class="sub-section">
-                    <div class="sub-heading">Shearwater Rafting</div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="161" data-name="ONE DAY RAFTING TRIP (High Water)">
-                        <div class="service-info">
-                            <div class="service-name">ONE DAY RAFTING TRIP (High Water)</div>
-                        </div>
-                        <div class="service-price">US$161</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="173" data-name="ONE DAY RAFTING TRIP (Low Water)">
-                        <div class="service-info">
-                            <div class="service-name">ONE DAY RAFTING TRIP (Low Water)</div>
-                        </div>
-                        <div class="service-price">US$173</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="330" data-name="ONE DAY PLUS OVERNIGHT RAFTING TRIP">
-                        <div class="service-info">
-                            <div class="service-name">ONE DAY PLUS OVERNIGHT RAFTING TRIP</div>
-                        </div>
-                        <div class="service-price">US$330</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="141" data-name="ADVENTURE JETBOAT">
-                        <div class="service-info">
-                            <div class="service-name">ADVENTURE JETBOAT</div>
-                            <div class="service-note">Excluding National Parks fees, bring to check in US$12</div>
-                        </div>
-                        <div class="service-price">US$141</div>
-                    </div>
-                </div>
-                
-                <!-- Third Party Activities -->
-                <div class="sub-section">
-                    <div class="sub-heading">Third Party Activities</div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="60" data-name="QUAD BIKE">
-                        <div class="service-info">
-                            <div class="service-name">QUAD BIKE</div>
-                        </div>
-                        <div class="service-price">US$60</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="140" data-name="HORSE TRAILS (HORSE RIDING)">
-                        <div class="service-info">
-                            <div class="service-name">HORSE TRAILS (HORSE RIDING)</div>
-                            <div class="service-note">Excluding National Parks fees, bring to check in US$12</div>
-                        </div>
-                        <div class="service-price">US$140</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="158" data-name="RHINO ENCOUNTER GAME DRIVE">
-                        <div class="service-info">
-                            <div class="service-name">RHINO ENCOUNTER GAME DRIVE</div>
-                            <div class="service-note">Excludes conservation fees of $8 for am/pm Game Drive</div>
-                        </div>
-                        <div class="service-price">US$158</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="65" data-name="BOMA DINNER">
-                        <div class="service-info">
-                            <div class="service-name">BOMA DINNER</div>
-                            <div class="service-note">Excluding US$15 transfer fee</div>
-                        </div>
-                        <div class="service-price">US$65</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="159" data-name="LIVINGSTONE ISLAND TOUR">
-                        <div class="service-info">
-                            <div class="service-name">LIVINGSTONE ISLAND TOUR</div>
-                            <div class="service-note">Excl. transfer FROM</div>
-                        </div>
-                        <div class="service-price">US$159</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="46" data-name="TRANSFER TO LIVINGSTONE ISLAND">
-                        <div class="service-info">
-                            <div class="service-name">TRANSFER TO LIVINGSTONE ISLAND</div>
-                            <div class="service-note">RETURN</div>
-                        </div>
-                        <div class="service-price">US$46</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="31" data-name="BRIDGE TOUR FEES">
-                        <div class="service-info">
-                            <div class="service-name">BRIDGE TOUR FEES</div>
-                            <div class="service-note">1 WAY</div>
-                        </div>
-                        <div class="service-price">US$31</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Experiential Tours Tab -->
-        <div id="experiential" class="tab-content">
-            <div class="section">
-                <div class="section-heading">Experiential Tours</div>
-                
-                <!-- Scenic Helicopter Flights -->
-                <div class="sub-section">
-                    <div class="sub-heading">Scenic Helicopter Flights</div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="173" data-name="FLIGHT OF ANGELS 12-13 Minutes">
-                        <div class="service-info">
-                            <div class="service-name">FLIGHT OF ANGELS 12-13 Minutes</div>
-                            <div class="service-note">Excl. Government fees and fuel surcharge, bring to check in US$29</div>
-                        </div>
-                        <div class="service-price">US$173</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="271" data-name="ZAMBEZI EXPLORERS FLIGHT 20 Minutes">
-                        <div class="service-info">
-                            <div class="service-name">ZAMBEZI EXPLORERS FLIGHT 20 Minutes</div>
-                        </div>
-                        <div class="service-price">US$271</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="328" data-name="ZAMBEZI SPECTACULAR 25 Minutes">
-                        <div class="service-info">
-                            <div class="service-name">ZAMBEZI SPECTACULAR 25 Minutes</div>
-                            <div class="service-note">Excl. Government fees and fuel surcharge, bring to check in US$35</div>
-                        </div>
-                        <div class="service-price">US$328</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="58" data-name="PREMIUM LOUNGE">
-                        <div class="service-info">
-                            <div class="service-name">PREMIUM LOUNGE</div>
-                        </div>
-                        <div class="service-price">US$58</div>
-                    </div>
-                </div>
-                
-                <!-- Shearwater Cruises -->
-                <div class="sub-section">
-                    <div class="sub-heading">Shearwater Cruises</div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="80" data-name="RIVERSONG PREMIUM LUXURY - Morning Cruise">
-                        <div class="service-info">
-                            <div class="service-name">RIVERSONG PREMIUM LUXURY - Morning Cruise</div>
-                        </div>
-                        <div class="service-price">US$80</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="100" data-name="RIVERSONG PREMIUM LUXURY - Lunch Cruise">
-                        <div class="service-info">
-                            <div class="service-name">RIVERSONG PREMIUM LUXURY - Lunch Cruise</div>
-                        </div>
-                        <div class="service-price">US$100</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="100" data-name="RIVERSONG PREMIUM LUXURY - Sunset Cruise">
-                        <div class="service-info">
-                            <div class="service-name">RIVERSONG PREMIUM LUXURY - Sunset Cruise</div>
-                        </div>
-                        <div class="service-price">US$100</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="52" data-name="STANDARD - Sunset Cruise">
-                        <div class="service-info">
-                            <div class="service-name">STANDARD - Sunset Cruise</div>
-                        </div>
-                        <div class="service-price">US$52</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="110" data-name="DINNER CRUISE">
-                        <div class="service-info">
-                            <div class="service-name">DINNER CRUISE</div>
-                            <div class="service-note">Excluding National Parks fees, bring to check in US$12</div>
-                        </div>
-                        <div class="service-price">US$110</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Exploration Tours Tab -->
-        <div id="exploration" class="tab-content">
-            <div class="section">
-                <div class="section-heading">Exploration Tours</div>
-                
-                <!-- Safari Adventures -->
-                <div class="sub-section">
-                    <div class="sub-heading">Safari Adventures</div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="159" data-name="NIGHT GAME DRIVE">
-                        <div class="service-info">
-                            <div class="service-name">NIGHT GAME DRIVE*</div>
-                            <div class="service-note">incl. Shearwater Bush Dinner</div>
-                        </div>
-                        <div class="service-price">US$159</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="81" data-name="AM/PM GAME DRIVE">
-                        <div class="service-info">
-                            <div class="service-name">AM/PM GAME DRIVE*</div>
-                        </div>
-                        <div class="service-price">US$81</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="132" data-name="SAFARI GAME WALKS">
-                        <div class="service-info">
-                            <div class="service-name">SAFARI GAME WALKS*</div>
-                        </div>
-                        <div class="service-price">US$132</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="148" data-name="THROUGH THE EYES OF AN ELEPHANT">
-                        <div class="service-info">
-                            <div class="service-name">THROUGH THE EYES OF AN ELEPHANT</div>
-                            <div class="service-note">Suggested Donation</div>
-                        </div>
-                        <div class="service-price">US$148</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="100" data-name="BREAKFAST WITH ELEPHANTS">
-                        <div class="service-info">
-                            <div class="service-name">BREAKFAST WITH ELEPHANTS</div>
-                            <div class="service-note">Excludes park fees of $18 for Night Game Drive, Day Game Drive and Safari Game Walks</div>
-                        </div>
-                        <div class="service-price">US$100</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="167" data-name="CHOBE DAY TRIP">
-                        <div class="service-info">
-                            <div class="service-name">CHOBE DAY TRIP</div>
-                            <div class="service-note">Excl. National Parks fees, bring to check in $20 per person</div>
-                        </div>
-                        <div class="service-price">US$167</div>
-                    </div>
-                </div>
-                
-                <!-- Tours & Transfers -->
-                <div class="sub-section">
-                    <div class="sub-heading">Tours & Transfers</div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="64" data-name="THEATRICAL HISTORICAL BRIDGE TOUR">
-                        <div class="service-info">
-                            <div class="service-name">THEATRICAL HISTORICAL BRIDGE TOUR</div>
-                            <div class="service-note">Excluding transfer fee US$12</div>
-                        </div>
-                        <div class="service-price">US$64</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="74" data-name="TRADITIONAL VILLAGE TOUR">
-                        <div class="service-info">
-                            <div class="service-name">TRADITIONAL VILLAGE TOUR</div>
-                        </div>
-                        <div class="service-price">US$74</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="32" data-name="GUIDED TOUR OF VICTORIA FALLS">
-                        <div class="service-info">
-                            <div class="service-name">GUIDED TOUR OF VICTORIA FALLS</div>
-                            <div class="service-note">Excl. entry fee</div>
-                        </div>
-                        <div class="service-price">US$32</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="58" data-name="SIMUNYE - THE SPIRIT OF AFRICA">
-                        <div class="service-info">
-                            <div class="service-name">SIMUNYE - THE SPIRIT OF AFRICA</div>
-                        </div>
-                        <div class="service-price">US$58</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="10" data-name="VICTORIA FALLS AIRPORT TRANSFER">
-                        <div class="service-info">
-                            <div class="service-name">VICTORIA FALLS AIRPORT TRANSFER</div>
-                            <div class="service-note">$10 per person, 1 way</div>
-                        </div>
-                        <div class="service-price">US$10</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="10" data-name="LIVINGSTONE AIRPORT TRANSFER">
-                        <div class="service-info">
-                            <div class="service-name">LIVINGSTONE AIRPORT TRANSFER</div>
-                            <div class="service-note">$10 per person, 1 way</div>
-                        </div>
-                        <div class="service-price">US$10</div>
-                    </div>
-                    <div class="service-item selectable">
-                        <input type="checkbox" class="service-checkbox" data-price="3" data-name="BRIDGE TOLL FEES">
-                        <div class="service-info">
-                            <div class="service-name">BRIDGE TOLL FEES</div>
-                            <div class="service-note">1 WAY</div>
-                        </div>
-                        <div class="service-price">US$3</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Booking Section -->
-        <section class="booking-summary">
-            <div class="summary-header">
-                <div>
-                    <h2>Your Selected Services</h2>
-                    <p>As your customer chooses services, they will appear here with the total price before continuing to the confirmation page.</p>
-                </div>
-                <div class="summary-total">
-                    <span>Total Price</span>
-                    <strong id="summary-total">US$0.00</strong>
-                </div>
-            </div>
-            <ul id="selected-services-list" class="summary-list">
-                <li class="summary-empty">No services selected yet.</li>
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#popular-services">Popular Services</a></li>
+                <li><a href="index.html#accommodation">Accommodation</a></li>
+                <li><a href="service.html">Service Planner</a></li>
+                <li><a href="booking-confirmation.html">Booking</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
-            <ul id="booking-summary"></ul>
-<strong id="total-price">$0</strong>
+        </nav>
+    </header>
+
+    <main>
+        <section class="service-hero">
+            <div class="container">
+                <div class="service-hero-layout">
+                    <div class="service-hero-copy">
+                        <p class="eyebrow">Experience Planner</p>
+                        <h1>Build your Victoria Falls itinerary with live per-visitor pricing.</h1>
+                        <p>Select your experiences, set the number of visitors, and review your estimated total before moving to the booking confirmation page.</p>
+                        <div class="service-hero-actions">
+                            <a href="index.html#popular-services" class="btn">Back to Home</a>
+                            <a href="#planner" class="ghost-btn">Plan Services</a>
+                        </div>
+                    </div>
+                    <aside class="planner-spotlight">
+                        <p class="spotlight-label">Trip Settings</p>
+                        <h2>How many visitors are travelling?</h2>
+                        <p>All listed prices are calculated per visitor. Airport to hotel transfer is billed at US$15 per person with a minimum billing quantity of 2 passengers.</p>
+                        <div class="guest-counter">
+                            <button type="button" class="counter-btn" data-change="-1" aria-label="Decrease visitors">-</button>
+                            <label class="counter-field" for="visitor-count">
+                                <span>Visitors</span>
+                                <input id="visitor-count" type="number" min="1" value="1" inputmode="numeric" data-visitor-input>
+                            </label>
+                            <button type="button" class="counter-btn" data-change="1" aria-label="Increase visitors">+</button>
+                        </div>
+                        <div class="spotlight-tags">
+                            <span>Live total updates</span>
+                            <span>Per-guest pricing</span>
+                            <span>Ready for booking</span>
+                        </div>
+                    </aside>
+                </div>
+            </div>
         </section>
 
-        <div class="booking-section">
-            <button class="book-btn" onclick="proceedToBooking()">Book Selected Services</button>
-        </div>
-    </div>
-    
+        <section id="planner" class="service-planner-section">
+            <div class="container">
+                <div class="planner-layout">
+                    <div class="planner-main">
+                        <div class="planner-toolbar">
+                            <div>
+                                <p class="eyebrow">Select Services</p>
+                                <h2>Create your ideal tour mix.</h2>
+                            </div>
+                            <div class="planner-toolbar-meta">
+                                <div class="planner-note">Totals reflect the visitor count above, so your estimate adjusts immediately as your group size changes.</div>
+                                <div class="planner-visitor-panel">
+                                    <span class="planner-visitor-label">Visitors Coming</span>
+                                    <strong>Adjust group size here</strong>
+                                    <div class="planner-visitor-counter">
+                                        <button type="button" class="counter-btn counter-btn-soft" data-change="-1" aria-label="Decrease visitors">-</button>
+                                        <input id="planner-visitor-count" class="planner-visitor-input" type="number" min="1" value="1" inputmode="numeric" data-visitor-input aria-label="Number of visitors">
+                                        <button type="button" class="counter-btn counter-btn-soft" data-change="1" aria-label="Increase visitors">+</button>
+                                    </div>
+                                    <p class="planner-visitor-hint">Type the number yourself or use the buttons.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="initial-section" class="transfer-panel">
+                            <div class="transfer-copy">
+                                <p class="eyebrow">Arrival Transfer</p>
+                                <h3>Airport to Hotel Transfer</h3>
+                                <p>Start your stay with a smooth airport pickup to your hotel or lodge. This transfer is charged at US$15 per passenger, with a minimum billing quantity of 2 passengers.</p>
+                            </div>
+                            <div class="service-item selectable transfer-item">
+                                <input type="checkbox" class="service-checkbox" data-price="15" data-name="Airport to Hotel Transfer" data-min-passengers="2">
+                                <div class="service-info">
+                                    <div class="service-name">Airport to Hotel Transfer</div>
+                                    <div class="service-note">Minimum billing quantity: 2 passengers</div>
+                                </div>
+                                <div class="service-price">US$15 / person</div>
+                            </div>
+                        </div>
+
+                        <div class="tab-buttons">
+                            <button class="tab-btn active" onclick="openTab(event, 'adventurous')">Adventurous Activities</button>
+                            <button class="tab-btn" onclick="openTab(event, 'experiential')">Experiential Tours</button>
+                            <button class="tab-btn" onclick="openTab(event, 'exploration')">Exploration Tours</button>
+                        </div>
+
+                        <div id="adventurous" class="tab-content active">
+                            <div class="section">
+                                <div class="section-heading">Adventurous Activities</div>
+
+                                <div class="sub-section">
+                                    <div class="sub-heading">Bridge Activities</div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="194" data-name="BUNGEE JUMPING">
+                                        <div class="service-info">
+                                            <div class="service-name">BUNGEE JUMPING</div>
+                                        </div>
+                                        <div class="service-price">US$194 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="58" data-name="BRIDGE SLIDE/ ZIPLINE">
+                                        <div class="service-info">
+                                            <div class="service-name">BRIDGE SLIDE/ZIPLINE</div>
+                                        </div>
+                                        <div class="service-price">US$58 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="82" data-name="TANDEM BRIDGE SLIDE/ ZIPLINE">
+                                        <div class="service-info">
+                                            <div class="service-name">TANDEM BRIDGE SLIDE/ZIPLINE</div>
+                                        </div>
+                                        <div class="service-price">US$82 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="131" data-name="BRIDGE SWING">
+                                        <div class="service-info">
+                                            <div class="service-name">BRIDGE SWING</div>
+                                        </div>
+                                        <div class="service-price">US$131 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="201" data-name="TANDEM BRIDGE SWING">
+                                        <div class="service-info">
+                                            <div class="service-name">TANDEM BRIDGE SWING</div>
+                                        </div>
+                                        <div class="service-price">US$201 / person</div>
+                                    </div>
+                                </div>
+
+                                <div class="sub-section">
+                                    <div class="sub-heading">Shearwater Rafting</div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="161" data-name="ONE DAY RAFTING TRIP (High Water)">
+                                        <div class="service-info">
+                                            <div class="service-name">ONE DAY RAFTING TRIP (High Water)</div>
+                                        </div>
+                                        <div class="service-price">US$161 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="173" data-name="ONE DAY RAFTING TRIP (Low Water)">
+                                        <div class="service-info">
+                                            <div class="service-name">ONE DAY RAFTING TRIP (Low Water)</div>
+                                        </div>
+                                        <div class="service-price">US$173 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="330" data-name="ONE DAY PLUS OVERNIGHT RAFTING TRIP">
+                                        <div class="service-info">
+                                            <div class="service-name">ONE DAY PLUS OVERNIGHT RAFTING TRIP</div>
+                                        </div>
+                                        <div class="service-price">US$330 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="141" data-name="ADVENTURE JETBOAT">
+                                        <div class="service-info">
+                                            <div class="service-name">ADVENTURE JETBOAT</div>
+                                            <div class="service-note">Excluding National Parks fees, bring to check in US$12</div>
+                                        </div>
+                                        <div class="service-price">US$141 / person</div>
+                                    </div>
+                                </div>
+
+                                <div class="sub-section">
+                                    <div class="sub-heading">Third Party Activities</div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="60" data-name="QUAD BIKE">
+                                        <div class="service-info">
+                                            <div class="service-name">QUAD BIKE</div>
+                                        </div>
+                                        <div class="service-price">US$60 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="140" data-name="HORSE TRAILS (HORSE RIDING)">
+                                        <div class="service-info">
+                                            <div class="service-name">HORSE TRAILS (HORSE RIDING)</div>
+                                            <div class="service-note">Excluding National Parks fees, bring to check in US$12</div>
+                                        </div>
+                                        <div class="service-price">US$140 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="158" data-name="RHINO ENCOUNTER GAME DRIVE">
+                                        <div class="service-info">
+                                            <div class="service-name">RHINO ENCOUNTER GAME DRIVE</div>
+                                            <div class="service-note">Excludes conservation fees of US$8 for am/pm game drive</div>
+                                        </div>
+                                        <div class="service-price">US$158 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="65" data-name="BOMA DINNER">
+                                        <div class="service-info">
+                                            <div class="service-name">BOMA DINNER</div>
+                                            <div class="service-note">Excluding transfer fee</div>
+                                        </div>
+                                        <div class="service-price">US$65 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="159" data-name="LIVINGSTONE ISLAND TOUR">
+                                        <div class="service-info">
+                                            <div class="service-name">LIVINGSTONE ISLAND TOUR</div>
+                                            <div class="service-note">Excluding transfer from the island</div>
+                                        </div>
+                                        <div class="service-price">US$159 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="46" data-name="TRANSFER TO LIVINGSTONE ISLAND">
+                                        <div class="service-info">
+                                            <div class="service-name">TRANSFER TO LIVINGSTONE ISLAND</div>
+                                            <div class="service-note">Return</div>
+                                        </div>
+                                        <div class="service-price">US$46 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="31" data-name="BRIDGE TOUR FEES">
+                                        <div class="service-info">
+                                            <div class="service-name">BRIDGE TOUR FEES</div>
+                                            <div class="service-note">1 way</div>
+                                        </div>
+                                        <div class="service-price">US$31 / person</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="experiential" class="tab-content">
+                            <div class="section">
+                                <div class="section-heading">Experiential Tours</div>
+
+                                <div class="sub-section">
+                                    <div class="sub-heading">Scenic Helicopter Flights</div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="173" data-name="FLIGHT OF ANGELS 12-13 Minutes">
+                                        <div class="service-info">
+                                            <div class="service-name">FLIGHT OF ANGELS 12-13 Minutes</div>
+                                            <div class="service-note">Excluding Government fees and fuel surcharge, bring to check in US$29</div>
+                                        </div>
+                                        <div class="service-price">US$173 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="271" data-name="ZAMBEZI EXPLORERS FLIGHT 20 Minutes">
+                                        <div class="service-info">
+                                            <div class="service-name">ZAMBEZI EXPLORERS FLIGHT 20 Minutes</div>
+                                        </div>
+                                        <div class="service-price">US$271 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="328" data-name="ZAMBEZI SPECTACULAR 25 Minutes">
+                                        <div class="service-info">
+                                            <div class="service-name">ZAMBEZI SPECTACULAR 25 Minutes</div>
+                                            <div class="service-note">Excluding Government fees and fuel surcharge, bring to check in US$35</div>
+                                        </div>
+                                        <div class="service-price">US$328 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="58" data-name="PREMIUM LOUNGE">
+                                        <div class="service-info">
+                                            <div class="service-name">PREMIUM LOUNGE</div>
+                                        </div>
+                                        <div class="service-price">US$58 / person</div>
+                                    </div>
+                                </div>
+
+                                <div class="sub-section">
+                                    <div class="sub-heading">Cruises</div>
+                                    <p>Prices may be subject to change.</p>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="80" data-name="RIVERSONG PREMIUM LUXURY - Morning Cruise">
+                                        <div class="service-info">
+                                            <div class="service-name">MORNING CRUISE</div>
+                                        </div>
+                                        <div class="service-price">US$80 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="100" data-name="RIVERSONG PREMIUM LUXURY - Lunch Cruise">
+                                        <div class="service-info">
+                                            <div class="service-name">LUNCH CRUISE</div>
+                                        </div>
+                                        <div class="service-price">US$100 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="100" data-name="RIVERSONG PREMIUM LUXURY - Sunset Cruise">
+                                        <div class="service-info">
+                                            <div class="service-name">SUNSET CRUISE</div>
+                                        </div>
+                                        <div class="service-price">US$100 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="52" data-name="STANDARD - Sunset Cruise">
+                                        <div class="service-info">
+                                            <div class="service-name">STANDARD CRUISE</div>
+                                        </div>
+                                        <div class="service-price">US$52 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="110" data-name="DINNER CRUISE">
+                                        <div class="service-info">
+                                            <div class="service-name">DINNER CRUISE</div>
+                                            <div class="service-note">Excluding National Parks fees, bring to check in US$12</div>
+                                        </div>
+                                        <div class="service-price">US$110 / person</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="exploration" class="tab-content">
+                            <div class="section">
+                                <div class="section-heading">Exploration Tours</div>
+
+                                <div class="sub-section">
+                                    <div class="sub-heading">Safari Adventures</div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="159" data-name="NIGHT GAME DRIVE">
+                                        <div class="service-info">
+                                            <div class="service-name">NIGHT GAME DRIVE*</div>
+                                            <div class="service-note">Including Shearwater Bush Dinner</div>
+                                        </div>
+                                        <div class="service-price">US$159 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="81" data-name="AM/PM GAME DRIVE">
+                                        <div class="service-info">
+                                            <div class="service-name">AM/PM GAME DRIVE*</div>
+                                        </div>
+                                        <div class="service-price">US$81 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="132" data-name="SAFARI GAME WALKS">
+                                        <div class="service-info">
+                                            <div class="service-name">SAFARI GAME WALKS*</div>
+                                        </div>
+                                        <div class="service-price">US$132 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="148" data-name="THROUGH THE EYES OF AN ELEPHANT">
+                                        <div class="service-info">
+                                            <div class="service-name">THROUGH THE EYES OF AN ELEPHANT</div>
+                                            <div class="service-note">Suggested donation</div>
+                                        </div>
+                                        <div class="service-price">US$148 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="100" data-name="BREAKFAST WITH ELEPHANTS">
+                                        <div class="service-info">
+                                            <div class="service-name">BREAKFAST WITH ELEPHANTS</div>
+                                            <div class="service-note">Excludes park fees of US$18 for Night Game Drive, Day Game Drive and Safari Game Walks</div>
+                                        </div>
+                                        <div class="service-price">US$100 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="167" data-name="CHOBE DAY TRIP">
+                                        <div class="service-info">
+                                            <div class="service-name">CHOBE DAY TRIP</div>
+                                            <div class="service-note">Excluding National Parks fees, bring to check in US$20 per person</div>
+                                        </div>
+                                        <div class="service-price">US$167 / person</div>
+                                    </div>
+                                </div>
+
+                                <div class="sub-section">
+                                    <div class="sub-heading">Tours &amp; Transfers</div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="64" data-name="THEATRICAL HISTORICAL BRIDGE TOUR">
+                                        <div class="service-info">
+                                            <div class="service-name">THEATRICAL HISTORICAL BRIDGE TOUR</div>
+                                            <div class="service-note">Excluding transfer fee</div>
+                                        </div>
+                                        <div class="service-price">US$64 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="74" data-name="TRADITIONAL VILLAGE TOUR">
+                                        <div class="service-info">
+                                            <div class="service-name">TRADITIONAL VILLAGE TOUR</div>
+                                        </div>
+                                        <div class="service-price">US$74 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="32" data-name="GUIDED TOUR OF VICTORIA FALLS">
+                                        <div class="service-info">
+                                            <div class="service-name">GUIDED TOUR OF VICTORIA FALLS</div>
+                                            <div class="service-note">Excluding entry fee</div>
+                                        </div>
+                                        <div class="service-price">US$32 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="58" data-name="SIMUNYE - THE SPIRIT OF AFRICA">
+                                        <div class="service-info">
+                                            <div class="service-name">SIMUNYE - THE SPIRIT OF AFRICA</div>
+                                        </div>
+                                        <div class="service-price">US$58 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="10" data-name="VICTORIA FALLS AIRPORT TRANSFER">
+                                        <div class="service-info">
+                                            <div class="service-name">VICTORIA FALLS AIRPORT TRANSFER</div>
+                                            <div class="service-note">US$10 per person, 1 way</div>
+                                        </div>
+                                        <div class="service-price">US$10 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="10" data-name="LIVINGSTONE AIRPORT TRANSFER">
+                                        <div class="service-info">
+                                            <div class="service-name">LIVINGSTONE AIRPORT TRANSFER</div>
+                                            <div class="service-note">US$10 per person, 1 way</div>
+                                        </div>
+                                        <div class="service-price">US$10 / person</div>
+                                    </div>
+                                    <div class="service-item selectable">
+                                        <input type="checkbox" class="service-checkbox" data-price="3" data-name="BRIDGE TOLL FEES">
+                                        <div class="service-info">
+                                            <div class="service-name">BRIDGE TOLL FEES</div>
+                                            <div class="service-note">1 way</div>
+                                        </div>
+                                        <div class="service-price">US$3 / person</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <aside class="booking-summary">
+                        <div class="summary-card">
+                            <p class="eyebrow">Booking Summary</p>
+                            <h3>Your selected services</h3>
+                            <div class="summary-stats">
+                                <div class="summary-stat">
+                                    <span>Visitors</span>
+                                    <strong id="summary-visitors">1</strong>
+                                </div>
+                                <div class="summary-stat">
+                                    <span>Services</span>
+                                    <strong id="summary-count">0</strong>
+                                </div>
+                            </div>
+                            <ul id="selected-services-list" class="summary-list">
+                                <li class="summary-empty">No services selected yet.</li>
+                            </ul>
+                            <div class="summary-total">
+                                <span>Estimated Total</span>
+                                <strong id="summary-total">US$0.00</strong>
+                            </div>
+                            <p class="summary-note">Airport to hotel transfer uses a minimum billing quantity of 2 passengers, so that service starts from US$30 even for a solo traveller.</p>
+                            <div class="summary-actions">
+                                <a href="index.html#popular-services" class="summary-link">Explore Home Page</a>
+                                <button class="btn book-btn" type="button" onclick="proceedToBooking()">Continue to Booking</button>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="page-footer">
+        <p>&copy; 2026 Victoria Falls Transporters. All rights reserved.</p>
+    </footer>
+
     <script>
-        const STORAGE_KEY_SERVICES = 'selectedServices';
-        const STORAGE_KEY_TOTAL = 'totalPrice';
-        let selectedServices = JSON.parse(sessionStorage.getItem(STORAGE_KEY_SERVICES) || '[]');
+        const STORAGE_KEY_SERVICES = "selectedServices";
+        const STORAGE_KEY_TOTAL = "totalPrice";
+        const STORAGE_KEY_VISITORS = "visitorCount";
+        const AIRPORT_TRANSFER_NAME = "Airport to Hotel Transfer";
+
+        let visitorCount = sanitizeVisitorCount(sessionStorage.getItem(STORAGE_KEY_VISITORS) || 1);
+        let selectedServices = normalizeServices(JSON.parse(sessionStorage.getItem(STORAGE_KEY_SERVICES) || "[]"));
+
+        function sanitizeVisitorCount(value) {
+            const parsedValue = parseInt(value, 10);
+            return Number.isFinite(parsedValue) && parsedValue > 0 ? parsedValue : 1;
+        }
+
+        function normalizeService(service) {
+            const isAirportTransfer = service.name === AIRPORT_TRANSFER_NAME;
+            const unitPrice = isAirportTransfer
+                ? 15
+                : Number(service.unitPrice ?? service.price ?? 0);
+            const minPassengers = isAirportTransfer
+                ? 2
+                : sanitizeVisitorCount(service.minPassengers || 1);
+
+            return {
+                name: service.name,
+                unitPrice,
+                minPassengers
+            };
+        }
+
+        function normalizeServices(services) {
+            return services
+                .filter(service => service && service.name)
+                .map(normalizeService);
+        }
 
         function openTab(evt, tabName) {
-            const tabContents = document.querySelectorAll('.tab-content');
-            tabContents.forEach(tab => tab.classList.remove('active'));
-            
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            tabBtns.forEach(btn => btn.classList.remove('active'));
-            
-            document.getElementById(tabName).classList.add('active');
-            evt.currentTarget.classList.add('active');
+            document.querySelectorAll(".tab-content").forEach(tab => tab.classList.remove("active"));
+            document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
         }
 
         function formatPrice(price) {
-            return `US$${price.toFixed(2)}`;
+            return `US$${Number(price).toFixed(2)}`;
+        }
+
+        function getPassengerQuantity(service) {
+            return Math.max(visitorCount, service.minPassengers || 1);
+        }
+
+        function getServiceTotal(service) {
+            return service.unitPrice * getPassengerQuantity(service);
         }
 
         function getTotalPrice() {
-            return selectedServices.reduce((sum, service) => sum + service.price, 0);
+            return selectedServices.reduce((sum, service) => sum + getServiceTotal(service), 0);
         }
 
         function saveState() {
-            sessionStorage.setItem(STORAGE_KEY_SERVICES, JSON.stringify(selectedServices));
+            const storedServices = selectedServices.map(service => ({
+                name: service.name,
+                unitPrice: service.unitPrice,
+                minPassengers: service.minPassengers,
+                price: getServiceTotal(service)
+            }));
+
+            sessionStorage.setItem(STORAGE_KEY_SERVICES, JSON.stringify(storedServices));
             sessionStorage.setItem(STORAGE_KEY_TOTAL, getTotalPrice().toFixed(2));
+            sessionStorage.setItem(STORAGE_KEY_VISITORS, String(visitorCount));
         }
 
         function updateSummary() {
-            const summaryList = document.getElementById('selected-services-list');
-            const totalElement = document.getElementById('summary-total');
-            const totalPrice = getTotalPrice();
+            const summaryList = document.getElementById("selected-services-list");
+            const totalElement = document.getElementById("summary-total");
+            const visitorsElement = document.getElementById("summary-visitors");
+            const countElement = document.getElementById("summary-count");
 
-            totalElement.textContent = formatPrice(totalPrice);
+            visitorsElement.textContent = String(visitorCount);
+            countElement.textContent = String(selectedServices.length);
+            totalElement.textContent = formatPrice(getTotalPrice());
 
             if (!selectedServices.length) {
                 summaryList.innerHTML = '<li class="summary-empty">No services selected yet.</li>';
-            } else {
-                summaryList.innerHTML = selectedServices.map(service => `
-                    <li class="summary-item">
-                        <span class="summary-item-name">${service.name}</span>
-                        <span class="summary-item-price">${formatPrice(service.price)}</span>
-                    </li>
-                `).join('');
+                return;
             }
+
+            summaryList.innerHTML = selectedServices.map(service => {
+                const quantity = getPassengerQuantity(service);
+                const minimumNote = service.minPassengers > visitorCount
+                    ? `, minimum ${service.minPassengers} passengers billed`
+                    : "";
+
+                return `
+                    <li class="summary-item">
+                        <div class="summary-item-top">
+                            <span class="summary-item-name">${service.name}</span>
+                            <span class="summary-item-price">${formatPrice(getServiceTotal(service))}</span>
+                        </div>
+                        <div class="summary-item-bottom">
+                            <span class="summary-item-meta">${formatPrice(service.unitPrice)} x ${quantity} visitor${quantity === 1 ? "" : "s"}${minimumNote}</span>
+                            <span class="summary-item-total">Line total</span>
+                        </div>
+                    </li>
+                `;
+            }).join("");
+        }
+
+        function syncVisitorInputs(options = {}) {
+            const activeElement = document.activeElement;
+
+            document.querySelectorAll("[data-visitor-input]").forEach(input => {
+                if (options.preserveActive && input === activeElement) {
+                    return;
+                }
+
+                input.value = String(visitorCount);
+            });
         }
 
         document.querySelectorAll(".service-item.selectable").forEach(item => {
             const checkbox = item.querySelector(".service-checkbox");
-            const name = checkbox.dataset.name;
-            const price = parseFloat(checkbox.dataset.price);
+            const service = normalizeService({
+                name: checkbox.dataset.name,
+                unitPrice: checkbox.dataset.price,
+                minPassengers: checkbox.dataset.minPassengers || 1
+            });
 
-            // Restore state on reload
-            if (selectedServices.some(s => s.name === name)) {
+            if (selectedServices.some(selectedService => selectedService.name === service.name)) {
                 checkbox.checked = true;
                 item.classList.add("selected");
             }
 
-            item.addEventListener("click", e => {
-                if (e.target.tagName !== "INPUT") {
+            item.addEventListener("click", event => {
+                if (event.target.tagName !== "INPUT") {
                     checkbox.checked = !checkbox.checked;
                 }
+
                 updateSelection();
             });
 
@@ -784,12 +1295,13 @@
 
             function updateSelection() {
                 if (checkbox.checked) {
-                    if (!selectedServices.some(s => s.name === name)) {
-                        selectedServices.push({ name, price });
+                    if (!selectedServices.some(selectedService => selectedService.name === service.name)) {
+                        selectedServices.push(service);
                     }
+
                     item.classList.add("selected");
                 } else {
-                    selectedServices = selectedServices.filter(s => s.name !== name);
+                    selectedServices = selectedServices.filter(selectedService => selectedService.name !== service.name);
                     item.classList.remove("selected");
                 }
 
@@ -798,19 +1310,56 @@
             }
         });
 
+        document.querySelectorAll("[data-visitor-input]").forEach(input => {
+            input.addEventListener("input", event => {
+                const rawValue = event.target.value.trim();
+
+                if (rawValue === "") {
+                    return;
+                }
+
+                const nextValue = parseInt(rawValue, 10);
+
+                if (!Number.isFinite(nextValue) || nextValue < 1) {
+                    return;
+                }
+
+                visitorCount = nextValue;
+                syncVisitorInputs({ preserveActive: true });
+                updateSummary();
+                saveState();
+            });
+
+            input.addEventListener("blur", event => {
+                visitorCount = sanitizeVisitorCount(event.target.value);
+                syncVisitorInputs();
+                updateSummary();
+                saveState();
+            });
+        });
+
+        document.querySelectorAll("[data-change]").forEach(button => {
+            button.addEventListener("click", () => {
+                visitorCount = Math.max(1, visitorCount + Number(button.dataset.change));
+                syncVisitorInputs();
+                updateSummary();
+                saveState();
+            });
+        });
+
         function proceedToBooking() {
             if (!selectedServices.length) {
-                alert('Please select at least one service.');
+                alert("Please select at least one service.");
                 return;
             }
 
             saveState();
-            window.location.href = 'booking-confirmation.html';
+            window.location.href = "booking-confirmation.html";
         }
 
-        // Populate summary using any stored selection on load.
+        syncVisitorInputs();
         updateSummary();
+        saveState();
     </script>
-    
 </body>
 </html>

@@ -4,146 +4,202 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking Confirmation | Victoria Falls Transporters</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .booking-page {
+            background:
+                radial-gradient(circle at top left, rgba(251, 160, 34, 0.15), transparent 24%),
+                radial-gradient(circle at top right, rgba(126, 201, 234, 0.2), transparent 24%),
+                linear-gradient(180deg, #eef8fb 0%, #fff8ee 54%, #edf7f8 100%);
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(160deg, #eff7f1 0%, #f7f2e7 100%);
-            color: #1f2937;
-            min-height: 100vh;
+        .booking-page section {
+            opacity: 1;
+            transform: none;
         }
 
-        header {
-            background-color: #1a5f3f;
-            color: white;
-            padding: 18px 20px;
+        .confirmation-hero {
+            margin-top: 82px;
+            padding-bottom: 54px;
+            background:
+                linear-gradient(118deg, rgba(2, 31, 53, 0.95) 0%, rgba(6, 64, 92, 0.9) 48%, rgba(12, 109, 125, 0.78) 100%),
+                radial-gradient(circle at top right, rgba(251, 160, 34, 0.24), transparent 28%);
+            color: var(--mist-100);
         }
 
-        .brand-bar {
-            max-width: 1180px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            text-align: left;
-        }
-
-        .brand-bar img {
-            width: 78px;
-            height: 78px;
-            object-fit: contain;
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.92);
-            padding: 6px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-        }
-
-        .brand-copy h1 {
-            font-size: 1.9rem;
-        }
-
-        .brand-copy p {
-            margin-top: 4px;
-            font-size: 0.95rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            opacity: 0.92;
-        }
-
-        .page {
-            max-width: 1180px;
-            margin: 28px auto;
-            padding: 0 20px 32px;
-        }
-
-        .intro {
-            margin-bottom: 24px;
-        }
-
-        .intro h2 {
-            color: #1a5f3f;
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .intro p {
-            color: #526072;
-            max-width: 760px;
-            line-height: 1.6;
-        }
-
-        .layout {
+        .confirmation-hero-layout {
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 24px;
+            grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .confirmation-hero-copy h1 {
+            font-size: clamp(3rem, 5vw, 4.8rem);
+            color: var(--mist-100);
+            margin-bottom: 1rem;
+        }
+
+        .confirmation-hero-copy p {
+            color: rgba(245, 247, 241, 0.88);
+            max-width: 640px;
+            font-size: 1.08rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .hero-card {
+            padding: 2rem;
+            border-radius: 28px;
+            background: linear-gradient(180deg, rgba(252, 254, 255, 0.16) 0%, rgba(255, 255, 255, 0.1) 100%);
+            border: 1px solid rgba(205, 235, 246, 0.2);
+            box-shadow: 0 20px 38px rgba(2, 20, 35, 0.22);
+            backdrop-filter: blur(14px);
+        }
+
+        .hero-card h2 {
+            text-align: left;
+            color: var(--mist-100);
+            font-size: clamp(2.1rem, 4vw, 2.8rem);
+            margin-bottom: 0.7rem;
+        }
+
+        .hero-card p {
+            color: rgba(245, 247, 241, 0.84);
+        }
+
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.8rem;
+            margin-top: 1.35rem;
+        }
+
+        .hero-metric {
+            padding: 1rem;
+            border-radius: 18px;
+            background: rgba(248, 251, 251, 0.14);
+            border: 1px solid rgba(205, 235, 246, 0.16);
+        }
+
+        .hero-metric span {
+            display: block;
+            font-size: 0.76rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #ffd46a;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-metric strong {
+            font-size: 1.7rem;
+            color: var(--mist-100);
+        }
+
+        .confirmation-shell {
+            padding-top: 26px;
+        }
+
+        .confirmation-layout {
+            display: grid;
+            grid-template-columns: minmax(320px, 0.92fr) minmax(0, 1.08fr);
+            gap: 1.9rem;
             align-items: start;
         }
 
-        .card {
-            background-color: white;
-            border-radius: 18px;
-            padding: 24px;
-            box-shadow: 0 16px 36px rgba(24, 53, 37, 0.1);
+        .summary-card,
+        .form-card {
+            background: rgba(255, 255, 255, 0.86);
+            border: 1px solid rgba(2, 43, 71, 0.08);
+            border-radius: 28px;
+            box-shadow: 0 20px 38px rgba(2, 31, 53, 0.1);
+            backdrop-filter: blur(10px);
         }
 
-        .card h3 {
-            color: #1a5f3f;
-            font-size: 1.35rem;
-            margin-bottom: 16px;
+        .summary-card {
+            position: sticky;
+            top: 112px;
+            padding: 1.7rem;
+        }
+
+        .summary-card h3,
+        .form-card h3 {
+            font-size: 2rem;
+            color: var(--midnight-900);
+            margin-bottom: 1rem;
         }
 
         .selected-list {
             list-style: none;
             display: grid;
-            gap: 12px;
-            margin-bottom: 18px;
+            gap: 0.85rem;
+            margin: 1rem 0 1.1rem;
         }
 
         .selected-item,
         .empty-state {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
-            padding: 14px 16px;
-            border-radius: 12px;
-            border: 1px solid #dfe9e3;
-            background-color: #f9fcfa;
+            padding: 1rem;
+            border-radius: 18px;
+            background: rgba(248, 251, 251, 0.98);
+            border: 1px solid rgba(2, 43, 71, 0.08);
         }
 
         .empty-state {
-            justify-content: center;
             text-align: center;
-            color: #6b7280;
+            color: var(--text-500);
+        }
+
+        .selected-item-top,
+        .selected-item-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+
+        .selected-item-top {
+            margin-bottom: 0.35rem;
         }
 
         .selected-item strong {
-            color: #213b2e;
+            color: var(--midnight-900);
         }
 
-        .selected-item span {
-            color: #1a5f3f;
-            font-weight: bold;
+        .selected-item-price {
+            font-weight: 700;
+            color: var(--teal-700);
             white-space: nowrap;
         }
 
+        .selected-item-meta,
+        .selected-item-total,
+        .summary-note {
+            color: var(--text-700);
+            font-size: 0.94rem;
+        }
+
         .total-box {
-            padding: 18px;
-            border-radius: 14px;
-            background: #1a5f3f;
-            color: white;
+            padding: 1.25rem 1.35rem;
+            border-radius: 22px;
+            background: linear-gradient(135deg, rgba(2, 43, 71, 0.98) 0%, rgba(12, 109, 125, 0.92) 100%);
+            color: var(--mist-100);
+            box-shadow: 0 18px 30px rgba(2, 31, 53, 0.18);
         }
 
         .total-box p {
-            opacity: 0.88;
-            margin-bottom: 6px;
+            color: rgba(245, 247, 241, 0.8);
+            font-size: 0.84rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin-bottom: 0.45rem;
         }
 
         .total-box strong {
@@ -151,361 +207,674 @@
         }
 
         .summary-note {
-            margin-top: 14px;
-            color: #526072;
-            line-height: 1.6;
-            font-size: 0.95rem;
+            margin-top: 1rem;
+            line-height: 1.7;
+        }
+
+        .summary-actions {
+            display: grid;
+            gap: 0.8rem;
+            margin-top: 1.35rem;
+        }
+
+        .summary-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+            padding: 0.9rem 1.1rem;
+            border-radius: 999px;
+            border: 1px solid rgba(2, 43, 71, 0.12);
+            background: rgba(237, 246, 248, 0.9);
+            color: var(--midnight-900);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .summary-link:hover,
+        .summary-link:focus-visible {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 24px rgba(2, 31, 53, 0.1);
+        }
+
+        .form-card {
+            padding: 2rem;
+        }
+
+        .form-card > p {
+            margin-bottom: 1.4rem;
         }
 
         .booking-form {
             display: grid;
-            gap: 18px;
+            gap: 1rem;
         }
 
         .field-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 16px;
+            gap: 1rem 1.1rem;
         }
 
-        label {
-            display: block;
-            font-weight: bold;
-            color: #234434;
-            margin-bottom: 8px;
+        .field-shell {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
-        input,
-        select,
-        textarea {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1px solid #cddcd1;
-            border-radius: 10px;
-            font-size: 0.98rem;
-            background-color: #fcfffd;
+        .field-shell label {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--midnight-900);
+            letter-spacing: 0.01em;
         }
 
-        textarea {
-            min-height: 118px;
-            resize: vertical;
+        .guest-field-shell {
+            padding: 1rem 1.05rem;
+            border-radius: 22px;
+            background: linear-gradient(180deg, rgba(236, 247, 249, 0.96) 0%, rgba(255, 247, 235, 0.96) 100%);
+            border: 1px solid rgba(2, 43, 71, 0.08);
+        }
+
+        .guest-field-shell label {
+            margin-bottom: 0.15rem;
+        }
+
+        .guest-field-note {
+            margin: 0;
+            color: var(--text-700);
+            font-size: 0.92rem;
+        }
+
+        .guest-stepper {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 0.75rem;
+        }
+
+        .guest-stepper-btn {
+            width: 54px;
+            min-height: 54px;
+            border: none;
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(2, 43, 71, 0.98) 0%, rgba(12, 109, 125, 0.92) 100%);
+            color: var(--mist-100);
+            font-size: 1.6rem;
+            cursor: pointer;
+            box-shadow: 0 12px 24px rgba(2, 31, 53, 0.16);
+        }
+
+        .guest-stepper-btn:hover,
+        .guest-stepper-btn:focus-visible {
+            transform: translateY(-1px);
+            box-shadow: 0 14px 26px rgba(2, 31, 53, 0.18);
+        }
+
+        .guest-stepper-input {
+            width: 112px;
+            min-height: 54px;
+            padding: 0.75rem 0.9rem;
+            border-radius: 18px;
+            border: 1px solid rgba(2, 43, 71, 0.14);
+            background: rgba(255, 255, 255, 0.96);
+            color: var(--midnight-900);
+            font-size: 1.7rem;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .guest-stepper-input:focus {
+            border-color: rgba(251, 160, 34, 0.72);
+            box-shadow: 0 0 0 3px rgba(251, 160, 34, 0.16);
+            outline: none;
+        }
+
+        .guest-stepper-input::-webkit-outer-spin-button,
+        .guest-stepper-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .guest-stepper-input {
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+
+        .field-full {
+            grid-column: 1 / -1;
         }
 
         .actions {
             display: flex;
-            gap: 12px;
+            gap: 0.9rem;
             flex-wrap: wrap;
-            align-items: center;
+            margin-top: 0.4rem;
         }
 
         .primary-btn,
         .secondary-btn {
-            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 54px;
+            padding: 0.95rem 1.5rem;
             border-radius: 999px;
-            cursor: pointer;
-            padding: 14px 24px;
-            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
             text-decoration: none;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            cursor: pointer;
         }
 
         .primary-btn {
-            background-color: #1a5f3f;
-            color: white;
-            box-shadow: 0 12px 24px rgba(26, 95, 63, 0.16);
-        }
-
-        .primary-btn:hover,
-        .secondary-btn:hover {
-            transform: translateY(-1px);
+            border: none;
+            background: linear-gradient(135deg, #ffd66d 0%, var(--sun-500) 54%, var(--gold-600) 100%);
+            color: var(--midnight-950);
+            box-shadow: 0 16px 30px rgba(200, 121, 18, 0.28);
         }
 
         .secondary-btn {
-            background-color: #e8f1ea;
-            color: #1a5f3f;
+            border: 1px solid rgba(2, 43, 71, 0.12);
+            background: rgba(237, 246, 248, 0.9);
+            color: var(--midnight-900);
+        }
+
+        .primary-btn:hover,
+        .secondary-btn:hover,
+        .primary-btn:focus-visible,
+        .secondary-btn:focus-visible {
+            transform: translateY(-2px);
         }
 
         .confirmation-message {
             display: none;
-            margin-top: 18px;
-            padding: 18px;
-            border-radius: 14px;
-            background-color: #edf9f0;
-            border: 1px solid #c5e6cd;
-            color: #1c5a34;
-            line-height: 1.6;
+            margin-top: 1rem;
+            padding: 1rem 1.1rem;
+            border-radius: 18px;
+            background: linear-gradient(180deg, rgba(237, 249, 240, 0.98) 0%, rgba(230, 246, 235, 0.98) 100%);
+            border: 1px solid rgba(74, 156, 91, 0.22);
+            color: #235734;
+            line-height: 1.7;
         }
 
         .confirmation-message.show {
             display: block;
         }
 
-        @media (max-width: 900px) {
-            .layout {
+        .page-footer {
+            padding-top: 26px;
+        }
+
+        @media (max-width: 980px) {
+            .confirmation-hero-layout,
+            .confirmation-layout {
                 grid-template-columns: 1fr;
+            }
+
+            .summary-card {
+                position: static;
             }
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
+            .confirmation-hero {
+                margin-top: 116px;
+            }
+
             .field-grid {
                 grid-template-columns: 1fr;
             }
 
-            .brand-bar {
-                text-align: center;
+            .hero-actions,
+            .selected-item-top,
+            .selected-item-bottom,
+            .guest-stepper,
+            .actions {
+                flex-direction: column;
+                align-items: stretch;
             }
 
-            .brand-copy h1 {
-                font-size: 1.6rem;
+            .guest-stepper-input {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .confirmation-hero {
+                margin-top: 140px;
+            }
+
+            .summary-card,
+            .form-card,
+            .hero-card {
+                padding: 1.35rem;
+            }
+
+            .hero-metrics {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
-<body>
+<body class="booking-page">
     <header>
-        <div class="brand-bar">
-            <img src="images/logo.png" alt="Victoria Falls Africana Tours logo">
-            <div class="brand-copy">
-                <h1>Victoria Falls Transporters</h1>
-                <p>Africana Tours</p>
+        <nav>
+            <div class="logo">
+                <a href="index.html#home" aria-label="Victoria Falls Transporters home">
+                    <img src="images/logo.png" alt="Victoria Falls Transporters Africana Tours logo">
+                    <span class="logo-text">
+                        <span class="logo-title">Victoria Falls <br> Transporters</span>
+                        <span class="logo-subtitle">Africana Tours</span>
+                    </span>
+                </a>
             </div>
-        </div>
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#popular-services">Popular Services</a></li>
+                <li><a href="index.html#accommodation">Accommodation</a></li>
+                <li><a href="service.html">Service Planner</a></li>
+                <li><a href="booking-confirmation.html">Booking</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main class="page">
-        <section class="intro">
-            <h2>Confirm Your Booking</h2>
-            <p>Review the selected services, choose the arrival date, and enter the guest details needed to finalize the booking request.</p>
+    <main>
+        <section class="confirmation-hero">
+            <div class="container">
+                <div class="confirmation-hero-layout">
+                    <div class="confirmation-hero-copy">
+                        <p class="eyebrow">Booking Confirmation</p>
+                        <h1>Review your trip details and confirm your request.</h1>
+                        <p>Use this page to verify your selected services, confirm the number of visitors, and submit the guest information needed for your Victoria Falls booking.</p>
+                        <div class="hero-actions">
+                            <a href="service.html" class="btn">Edit Services</a>
+                            <a href="index.html#contact" class="summary-link">Need Help?</a>
+                        </div>
+                    </div>
+                    <aside class="hero-card">
+                        <p class="spotlight-label">Quick Overview</p>
+                        <h2>Booking snapshot</h2>
+                        <p>Your visitor count drives the current estimate on this page, so any guest number change here updates the total before you submit.</p>
+                        <div class="hero-metrics">
+                            <div class="hero-metric">
+                                <span>Visitors</span>
+                                <strong id="hero-visitors">1</strong>
+                            </div>
+                            <div class="hero-metric">
+                                <span>Estimated Total</span>
+                                <strong id="hero-total">US$0.00</strong>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
         </section>
 
-        <section class="layout">
-            <article class="card">
-                <h3>Selected Services</h3>
-                <ul id="confirmation-services" class="selected-list">
-                    <li class="empty-state">No services have been selected yet.</li>
-                </ul>
-                <div class="total-box">
-                    <p>Total Booking Value</p>
-                    <strong id="confirmation-total">US$0.00</strong>
+        <section class="confirmation-shell">
+            <div class="container">
+                <div class="confirmation-layout">
+                    <aside class="summary-card">
+                        <p class="eyebrow">Selected Services</p>
+                        <h3>Your booking summary</h3>
+                        <ul id="confirmation-services" class="selected-list">
+                            <li class="empty-state">No services have been selected yet.</li>
+                        </ul>
+                        <div class="total-box">
+                            <p>Total Booking Value</p>
+                            <strong id="confirmation-total">US$0.00</strong>
+                        </div>
+                        <p class="summary-note">Airport to hotel transfer uses a minimum billing quantity of 2 passengers. If you change the number of guests below, the estimate on this page updates automatically.</p>
+                        <div class="summary-actions">
+                            <a class="summary-link" href="service.html">Back to Services</a>
+                            <a class="summary-link" href="index.html#popular-services">Home Page</a>
+                        </div>
+                    </aside>
+
+                    <article class="form-card">
+                        <p class="eyebrow">Guest Details</p>
+                        <h3>Guest and arrival information</h3>
+                        <p>Complete the form below to send your booking request. Your selected services and latest visitor-based total will be included automatically.</p>
+                        <form id="booking-form" class="booking-form">
+                            <div class="field-grid">
+                                <div class="field-shell">
+                                    <label for="full-name">Full Name</label>
+                                    <input id="full-name" name="fullName" type="text" placeholder="Enter customer full name" required>
+                                </div>
+                                <div class="field-shell">
+                                    <label for="email">Email Address</label>
+                                    <input id="email" name="email" type="email" placeholder="Enter active email address" required>
+                                </div>
+                            </div>
+
+                            <div class="field-grid">
+                                <div class="field-shell">
+                                    <label for="phone">Phone / WhatsApp Number</label>
+                                    <input id="phone" name="phone" type="tel" placeholder="Enter contact number" required>
+                                </div>
+                                <div class="field-shell guest-field-shell">
+                                    <label for="guests">Number of Guests</label>
+                                    <p class="guest-field-note">Type the visitor count or use the buttons to update your estimate instantly.</p>
+                                    <div class="guest-stepper">
+                                        <button type="button" class="guest-stepper-btn" data-guest-change="-1" aria-label="Decrease guests">-</button>
+                                        <input id="guests" class="guest-stepper-input" name="guests" type="number" min="1" value="1" inputmode="numeric" required>
+                                        <button type="button" class="guest-stepper-btn" data-guest-change="1" aria-label="Increase guests">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field-grid">
+                                <div class="field-shell">
+                                    <label for="arrival-date">Date of Arrival</label>
+                                    <input id="arrival-date" name="arrivalDate" type="date" required>
+                                </div>
+                                <div class="field-shell">
+                                    <label for="arrival-time">Estimated Arrival Time</label>
+                                    <input id="arrival-time" name="arrivalTime" type="time">
+                                </div>
+                            </div>
+
+                            <div class="field-grid">
+                                <div class="field-shell">
+                                    <label for="pickup-location">Pickup Location / Hotel</label>
+                                    <input id="pickup-location" name="pickupLocation" type="text" placeholder="Airport, hotel, or lodge name" required>
+                                </div>
+                                <div class="field-shell">
+                                    <label for="flight-number">Flight Number</label>
+                                    <input id="flight-number" name="flightNumber" type="text" placeholder="Optional flight reference">
+                                </div>
+                            </div>
+
+                            <div class="field-grid">
+                                <div class="field-shell">
+                                    <label for="country">Country</label>
+                                    <input id="country" name="country" type="text" placeholder="Customer country">
+                                </div>
+                                <div class="field-shell">
+                                    <label for="payment-method">Preferred Payment Method</label>
+                                    <select id="payment-method" name="paymentMethod" required>
+                                        <option value="">Select payment method</option>
+                                        <option value="cash">Cash on arrival</option>
+                                        <option value="bank-transfer">Bank transfer</option>
+                                        <option value="mobile-money">Mobile money</option>
+                                        <option value="card">Card payment</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="field-grid">
+                                <div class="field-shell field-full">
+                                    <label for="requests">Special Requests</label>
+                                    <textarea id="requests" name="specialRequests" placeholder="Dietary requests, child seats, accessibility support, or other notes"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="actions">
+                                <button type="submit" class="primary-btn">Confirm Booking</button>
+                                <a class="secondary-btn" href="service.html">Edit Services</a>
+                            </div>
+                        </form>
+
+                        <div id="confirmation-message" class="confirmation-message"></div>
+                    </article>
                 </div>
-                <p class="summary-note">If the customer needs to change the selected activities, they can return to the service page before submitting this booking form.</p>
-            </article>
-
-            <article class="card">
-                <h3>Guest and Arrival Details</h3>
-                <form id="booking-form" class="booking-form">
-                    <div class="field-grid">
-                        <div>
-                            <label for="full-name">Full Name</label>
-                            <input id="full-name" name="fullName" type="text" placeholder="Enter customer full name" required>
-                        </div>
-                        <div>
-                            <label for="email">Email Address</label>
-                            <input id="email" name="email" type="email" placeholder="Enter active email address" required>
-                        </div>
-                    </div>
-
-                    <div class="field-grid">
-                        <div>
-                            <label for="phone">Phone / WhatsApp Number</label>
-                            <input id="phone" name="phone" type="tel" placeholder="Enter contact number" required>
-                        </div>
-                        <div>
-                            <label for="guests">Number of Guests</label>
-                            <input id="guests" name="guests" type="number" min="1" value="1" required>
-                        </div>
-                    </div>
-
-                    <div class="field-grid">
-                        <div>
-                            <label for="arrival-date">Date of Arrival</label>
-                            <input id="arrival-date" name="arrivalDate" type="date" required>
-                        </div>
-                        <div>
-                            <label for="arrival-time">Estimated Arrival Time</label>
-                            <input id="arrival-time" name="arrivalTime" type="time">
-                        </div>
-                    </div>
-
-                    <div class="field-grid">
-                        <div>
-                            <label for="pickup-location">Pickup Location / Hotel</label>
-                            <input id="pickup-location" name="pickupLocation" type="text" placeholder="Airport, hotel, or lodge name" required>
-                        </div>
-                        <div>
-                            <label for="flight-number">Flight Number</label>
-                            <input id="flight-number" name="flightNumber" type="text" placeholder="Optional flight reference">
-                        </div>
-                    </div>
-
-                    <div class="field-grid">
-                        <div>
-                            <label for="country">Country</label>
-                            <input id="country" name="country" type="text" placeholder="Customer country">
-                        </div>
-                        <div>
-                            <label for="payment-method">Preferred Payment Method</label>
-                            <select id="payment-method" name="paymentMethod" required>
-                                <option value="">Select payment method</option>
-                                <option value="cash">Cash on arrival</option>
-                                <option value="bank-transfer">Bank transfer</option>
-                                <option value="mobile-money">Mobile money</option>
-                                <option value="card">Card payment</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label for="requests">Special Requests</label>
-                        <textarea id="requests" name="specialRequests" placeholder="Dietary requests, child seats, accessibility support, or other notes"></textarea>
-                    </div>
-
-                    <div class="actions">
-                        <button type="submit" class="primary-btn">Confirm Booking</button>
-                        <a class="secondary-btn" href="service.html">Back to Services</a>
-                    </div>
-                </form>
-
-                <div id="confirmation-message" class="confirmation-message"></div>
-            </article>
+            </div>
         </section>
     </main>
 
-   <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const STORAGE_KEY_SERVICES = "selectedServices";
-  const STORAGE_KEY_TOTAL = "totalPrice";
+    <footer class="page-footer">
+        <p>&copy; 2026 Victoria Falls Transporters. All rights reserved.</p>
+    </footer>
 
-  function formatPrice(price) {
-    return `US$${Number(price).toFixed(2)}`;
-  }
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const STORAGE_KEY_SERVICES = "selectedServices";
+            const STORAGE_KEY_TOTAL = "totalPrice";
+            const STORAGE_KEY_VISITORS = "visitorCount";
+            const AIRPORT_TRANSFER_NAME = "Airport to Hotel Transfer";
 
-  function loadBookingSummary() {
-    const selectedServices = JSON.parse(
-      sessionStorage.getItem(STORAGE_KEY_SERVICES) || "[]"
-    );
-    const totalPrice = sessionStorage.getItem(STORAGE_KEY_TOTAL) || "0";
+            let selectedServices = [];
+            let visitorCount = 1;
 
-    const servicesList = document.getElementById("confirmation-services");
-    const totalElement = document.getElementById("confirmation-total");
+            function sanitizeVisitorCount(value) {
+                const parsedValue = parseInt(value, 10);
+                return Number.isFinite(parsedValue) && parsedValue > 0 ? parsedValue : 1;
+            }
 
-    totalElement.textContent = formatPrice(totalPrice);
+            function normalizeService(service) {
+                const isAirportTransfer = service.name === AIRPORT_TRANSFER_NAME;
+                const unitPrice = isAirportTransfer
+                    ? 15
+                    : Number(service.unitPrice ?? service.price ?? 0);
+                const minPassengers = isAirportTransfer
+                    ? 2
+                    : sanitizeVisitorCount(service.minPassengers || 1);
 
-    if (!selectedServices.length) {
-      servicesList.innerHTML =
-        '<li class="empty-state">No services have been selected yet.</li>';
-      return false;
-    }
+                return {
+                    name: service.name,
+                    unitPrice,
+                    minPassengers
+                };
+            }
 
-    servicesList.innerHTML = selectedServices
-      .map(
-        (service) => `
-        <li class="selected-item">
-          <strong>${service.name}</strong>
-          <span>${formatPrice(service.price)}</span>
-        </li>
-      `
-      )
-      .join("");
+            function loadServicesFromStorage() {
+                return JSON.parse(sessionStorage.getItem(STORAGE_KEY_SERVICES) || "[]")
+                    .filter(service => service && service.name)
+                    .map(normalizeService);
+            }
 
-    return true;
-  }
+            function formatPrice(price) {
+                return `US$${Number(price).toFixed(2)}`;
+            }
 
-  function setMinimumArrivalDate() {
-    const arrivalDateInput = document.getElementById("arrival-date");
-    const today = new Date().toISOString().split("T")[0];
-    arrivalDateInput.min = today;
+            function getPassengerQuantity(service, guests = visitorCount) {
+                return Math.max(guests, service.minPassengers || 1);
+            }
 
-    if (!arrivalDateInput.value || arrivalDateInput.value < today) {
-      arrivalDateInput.value = today;
-    }
-  }
+            function getServiceTotal(service, guests = visitorCount) {
+                return service.unitPrice * getPassengerQuantity(service, guests);
+            }
 
-  document
-    .getElementById("arrival-date")
-    .addEventListener("input", (event) => {
-      if (event.target.value < event.target.min) {
-        event.target.value = event.target.min;
-      }
-    });
+            function getTotalPrice(services = selectedServices, guests = visitorCount) {
+                return services.reduce((sum, service) => sum + getServiceTotal(service, guests), 0);
+            }
 
-  document
-    .getElementById("booking-form")
-    .addEventListener("submit", async (event) => {
-      event.preventDefault();
+            function saveBookingState() {
+                const storedServices = selectedServices.map(service => ({
+                    name: service.name,
+                    unitPrice: service.unitPrice,
+                    minPassengers: service.minPassengers,
+                    price: getServiceTotal(service)
+                }));
 
-      const services = JSON.parse(
-        sessionStorage.getItem(STORAGE_KEY_SERVICES) || "[]"
-      );
-      const totalPrice = Number(
-        sessionStorage.getItem(STORAGE_KEY_TOTAL) || 0
-      );
+                sessionStorage.setItem(STORAGE_KEY_SERVICES, JSON.stringify(storedServices));
+                sessionStorage.setItem(STORAGE_KEY_TOTAL, getTotalPrice().toFixed(2));
+                sessionStorage.setItem(STORAGE_KEY_VISITORS, String(visitorCount));
+            }
 
-      if (!services.length) {
-        alert("No services selected.");
-        return;
-      }
+            function renderBookingSummary() {
+                const servicesList = document.getElementById("confirmation-services");
+                const totalElement = document.getElementById("confirmation-total");
+                const heroVisitors = document.getElementById("hero-visitors");
+                const heroTotal = document.getElementById("hero-total");
 
-      const formData = new FormData(event.target);
-      const formValues = Object.fromEntries(formData.entries());
+                totalElement.textContent = formatPrice(getTotalPrice());
+                heroVisitors.textContent = String(visitorCount);
+                heroTotal.textContent = formatPrice(getTotalPrice());
 
-      const bookingPayload = {
-        name: formValues.fullName,
-        email: formValues.email,
-        phone: formValues.phone,
-        guests: Number(formValues.guests),
-        arrivalDate: formValues.arrivalDate,
-        arrivalTime: formValues.arrivalTime,
-        pickupLocation: formValues.pickupLocation,
-        flightNumber: formValues.flightNumber,
-        country: formValues.country,
-        paymentMethod: formValues.paymentMethod,
-        specialRequests: formValues.specialRequests,
-        services,
-        totalPrice,
-      };
+                if (!selectedServices.length) {
+                    servicesList.innerHTML = '<li class="empty-state">No services have been selected yet.</li>';
+                    return false;
+                }
 
-      try {
-        const response = await fetch(
-          "https://vft-backend.onrender.com/api/bookings",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(bookingPayload),
-          }
-        );
+                servicesList.innerHTML = selectedServices.map(service => {
+                    const quantity = getPassengerQuantity(service);
+                    const minimumNote = service.minPassengers > visitorCount
+                        ? `, minimum ${service.minPassengers} passengers billed`
+                        : "";
 
-        const result = await response.json();
-        if (!response.ok) throw new Error(result.message);
+                    return `
+                        <li class="selected-item">
+                            <div class="selected-item-top">
+                                <strong>${service.name}</strong>
+                                <span class="selected-item-price">${formatPrice(getServiceTotal(service))}</span>
+                            </div>
+                            <div class="selected-item-bottom">
+                                <span class="selected-item-meta">${formatPrice(service.unitPrice)} x ${quantity} visitor${quantity === 1 ? "" : "s"}${minimumNote}</span>
+                                <span class="selected-item-total">Line total</span>
+                            </div>
+                        </li>
+                    `;
+                }).join("");
 
-      document.getElementById("confirmation-message").innerHTML = `
-  <strong>✅ Booking Confirmed</strong><br>
-  Booking Reference: <strong>${result.bookingRef}</strong><br>
-  Please save this code for future communication.
-`;
-        document
-          .getElementById("confirmation-message")
-          .classList.add("show");
+                return true;
+            }
 
-        sessionStorage.clear();
-        event.target.reset();
-      } catch (error) {
-        console.error(error);
-        alert("❌ Failed to submit booking. Please try again.");
-      }
-    });
+            function syncGuestInput() {
+                document.getElementById("guests").value = String(visitorCount);
+            }
 
-  const hasServices = loadBookingSummary();
-  setMinimumArrivalDate();
+            function setMinimumArrivalDate() {
+                const arrivalDateInput = document.getElementById("arrival-date");
+                const today = new Date().toISOString().split("T")[0];
+                arrivalDateInput.min = today;
 
-  if (!hasServices) {
-    document
-      .getElementById("booking-form")
-      .querySelectorAll("input, select, textarea, button")
-      .forEach((field) => (field.disabled = true));
-  }
-});
-</script>
+                if (!arrivalDateInput.value || arrivalDateInput.value < today) {
+                    arrivalDateInput.value = today;
+                }
+            }
 
+            selectedServices = loadServicesFromStorage();
+            visitorCount = sanitizeVisitorCount(sessionStorage.getItem(STORAGE_KEY_VISITORS) || 1);
+            syncGuestInput();
+            renderBookingSummary();
+            saveBookingState();
+            setMinimumArrivalDate();
+
+            document.getElementById("arrival-date").addEventListener("input", event => {
+                if (event.target.value < event.target.min) {
+                    event.target.value = event.target.min;
+                }
+            });
+
+            document.getElementById("guests").addEventListener("input", event => {
+                const rawValue = event.target.value.trim();
+
+                if (rawValue === "") {
+                    return;
+                }
+
+                const nextValue = parseInt(rawValue, 10);
+
+                if (!Number.isFinite(nextValue) || nextValue < 1) {
+                    return;
+                }
+
+                visitorCount = nextValue;
+                renderBookingSummary();
+                saveBookingState();
+            });
+
+            document.getElementById("guests").addEventListener("blur", event => {
+                visitorCount = sanitizeVisitorCount(event.target.value);
+                syncGuestInput();
+                renderBookingSummary();
+                saveBookingState();
+            });
+
+            document.querySelectorAll("[data-guest-change]").forEach(button => {
+                button.addEventListener("click", () => {
+                    visitorCount = Math.max(1, visitorCount + Number(button.dataset.guestChange));
+                    syncGuestInput();
+                    renderBookingSummary();
+                    saveBookingState();
+                });
+            });
+
+            document.getElementById("booking-form").addEventListener("submit", async event => {
+                event.preventDefault();
+
+                selectedServices = loadServicesFromStorage();
+                visitorCount = sanitizeVisitorCount(document.getElementById("guests").value);
+                syncGuestInput();
+
+                if (!selectedServices.length) {
+                    alert("No services selected.");
+                    return;
+                }
+
+                renderBookingSummary();
+                saveBookingState();
+
+                const formData = new FormData(event.target);
+                const formValues = Object.fromEntries(formData.entries());
+                const pricedServices = selectedServices.map(service => ({
+                    name: service.name,
+                    unitPrice: service.unitPrice,
+                    passengers: getPassengerQuantity(service),
+                    price: getServiceTotal(service)
+                }));
+
+                const bookingPayload = {
+                    name: formValues.fullName,
+                    email: formValues.email,
+                    phone: formValues.phone,
+                    guests: visitorCount,
+                    arrivalDate: formValues.arrivalDate,
+                    arrivalTime: formValues.arrivalTime,
+                    pickupLocation: formValues.pickupLocation,
+                    flightNumber: formValues.flightNumber,
+                    country: formValues.country,
+                    paymentMethod: formValues.paymentMethod,
+                    specialRequests: formValues.specialRequests,
+                    services: pricedServices,
+                    totalPrice: getTotalPrice(selectedServices, visitorCount)
+                };
+
+                try {
+                    const response = await fetch("https://vft-backend.onrender.com/api/bookings", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(bookingPayload)
+                    });
+
+                    const result = await response.json();
+
+                    if (!response.ok) {
+                        throw new Error(result.message || "Failed to submit booking");
+                    }
+
+                    document.getElementById("confirmation-message").innerHTML = `
+                        <strong>Booking Confirmed</strong><br>
+                        Booking Reference: <strong>${result.bookingRef}</strong><br>
+                        Please save this code for future communication.
+                    `;
+                    document.getElementById("confirmation-message").classList.add("show");
+
+                    sessionStorage.removeItem(STORAGE_KEY_SERVICES);
+                    sessionStorage.removeItem(STORAGE_KEY_TOTAL);
+                    sessionStorage.removeItem(STORAGE_KEY_VISITORS);
+                    event.target.reset();
+                    visitorCount = 1;
+                    syncGuestInput();
+                    setMinimumArrivalDate();
+                } catch (error) {
+                    console.error(error);
+                    alert("Failed to submit booking. Please try again.");
+                }
+            });
+
+            if (!selectedServices.length) {
+                document.getElementById("booking-form")
+                    .querySelectorAll("input, select, textarea, button")
+                    .forEach(field => {
+                        field.disabled = true;
+                    });
+            }
+        });
+    </script>
 </body>
 </html>
