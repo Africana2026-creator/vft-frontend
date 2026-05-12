@@ -419,6 +419,34 @@ h2 {
     opacity: 0.92;
 }
 
+.service-card--feature {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 2rem;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(255, 250, 241, 0.98) 0%, rgba(242, 231, 209, 0.96) 100%);
+}
+
+.game-drive-copy p {
+    margin-bottom: 0;
+}
+
+.game-drive-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.game-drive-gallery img {
+    width: 100%;
+    height: 230px;
+    margin-top: 0;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 16px 30px rgba(2, 31, 53, 0.14);
+}
+
 /* Memories Section */
 .memories-layout {
     display: grid;
@@ -1092,6 +1120,10 @@ footer {
     .contact-info .info-card:nth-child(2) {
         grid-column: auto;
     }
+
+    .service-card--feature {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 560px) {
@@ -1148,5 +1180,9 @@ footer {
     .btn {
         width: 100%;
         text-align: center;
+    }
+
+    .game-drive-gallery {
+        grid-template-columns: 1fr;
     }
 }
