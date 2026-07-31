@@ -540,7 +540,7 @@
                             <p>Total Booking Value</p>
                             <strong id="confirmation-total">US$0.00</strong>
                         </div>
-                        <p class="summary-note">Airport to hotel transfer uses a minimum billing quantity of 2 passengers. If you change the number of guests below, the estimate on this page updates automatically.</p>
+                        <p class="summary-note">Mandatory park fees are included in the line totals when priced. Fees marked included do not change the service price, and transfer minimums still apply.</p>
                         <div class="summary-actions">
                             <a class="summary-link" href="service.html">Back to Services</a>
                             <a class="summary-link" href="index.html#popular-services">Home Page</a>
@@ -647,7 +647,108 @@
             const STORAGE_KEY_SERVICES = "selectedServices";
             const STORAGE_KEY_TOTAL = "totalPrice";
             const STORAGE_KEY_VISITORS = "visitorCount";
-            const AIRPORT_TRANSFER_NAME = "Airport to Hotel Transfer";
+            const AIRPORT_TRANSFER_NAME = "Airport Transfer";
+            const LEGACY_AIRPORT_TRANSFER_NAME = "Airport to Hotel Transfer";
+            const SERVICE_ALIASES = {
+                [LEGACY_AIRPORT_TRANSFER_NAME]: AIRPORT_TRANSFER_NAME,
+                "BUNGEE JUMPING": "BUNGEE JUMP SOLO",
+                "TANDEM BRIDGE SLIDE/ ZIPLINE": "TANDEM BRIDGE SLIDE",
+                "ADVENTURE JETBOAT": "JETBOAT (2HRS)",
+                "FLIGHT OF ANGELS 12-13 Minutes": "13MINS ZIMBABWE HELICOPTER FLIGHT",
+                "ZAMBEZI EXPLORERS FLIGHT 20 Minutes": "22MINS HELICOPTER FLIGHT",
+                "ZAMBEZI SPECTACULAR 25 Minutes": "25MINS HELICOPTER FLIGHT",
+                "RIVERSONG PREMIUM LUXURY - Morning Cruise": "BREAKFAST CRUISE",
+                "RIVERSONG PREMIUM LUXURY - Lunch Cruise": "LUNCH CRUISE",
+                "RIVERSONG PREMIUM LUXURY - Sunset Cruise": "SUNSET CRUISE",
+                "STANDARD - Sunset Cruise": "SUNSET CRUISE",
+                "NIGHT GAME DRIVE": "NIGHT DRIVE WITH DINNER CRUISE",
+                "CHOBE DAY TRIP": "FULL DAY CHOBE (BOTSWANA)",
+                "THEATRICAL HISTORICAL BRIDGE TOUR": "BRIDGE TOUR",
+                "TRADITIONAL VILLAGE TOUR": "AFRICAN VILLAGE TOUR",
+                "GUIDED TOUR OF VICTORIA FALLS": "GUIDED TOUR OF THE FALLS"
+            };
+            const SERVICE_DEFAULTS = {
+                [AIRPORT_TRANSFER_NAME]: { unitPrice: 10, minPassengers: 3 },
+                "Kazungula Trip": { unitPrice: 30, minPassengers: 4 },
+                "Local Transfer": { unitPrice: 4, minPassengers: 4 },
+                "Hwange Transfer": { unitPrice: 65, minPassengers: 4 },
+                "BUNGEE JUMP SOLO": { unitPrice: 180 },
+                "TANDEM BRIDGE SLIDE": { unitPrice: 70 },
+                "BRIDGE SWING": { unitPrice: 180 },
+                "JETBOAT (2HRS)": { unitPrice: 130, parkFee: 12 },
+                "WHITE WATER RAFTING": { unitPrice: 130, parkFee: 3 },
+                "GORGE SWING": { unitPrice: 110, parkFee: 3 },
+                "TANDEM GORGE SWING": { unitPrice: 160, parkFee: 3 },
+                "FLYING FOX": { unitPrice: 55, parkFee: 3 },
+                "CANOPY TOUR": { unitPrice: 65, parkFee: 3 },
+                "HORSE TRAILS (HORSE RIDING)": { unitPrice: 140, parkFee: 12 },
+                "BOMA DINNER": { unitPrice: 70, parkFeeIncluded: true },
+                "LIVINGSTONE ISLAND TOUR": { unitPrice: 130, parkFeeIncluded: true },
+                "13MINS ZIMBABWE HELICOPTER FLIGHT": { unitPrice: 160, parkFee: 15 },
+                "15MINS ZAMBIA HELICOPTER FLIGHT": { unitPrice: 225, parkFee: 15 },
+                "22MINS HELICOPTER FLIGHT": { unitPrice: 250, parkFee: 15 },
+                "25MINS HELICOPTER FLIGHT": { unitPrice: 300, parkFee: 15 },
+                "SUNSET CRUISE": { unitPrice: 60, parkFeeIncluded: true },
+                "BREAKFAST CRUISE": { unitPrice: 60, parkFee: 12 },
+                "LUNCH CRUISE": { unitPrice: 80, parkFee: 17 },
+                "DINNER CRUISE": { unitPrice: 95, parkFee: 12 },
+                "BIRDWATCHING": { unitPrice: 45, parkFee: 12 },
+                "FISHING (3HRS)": { unitPrice: 110, parkFee: 12 },
+                "FISHING (HALF DAY)": { unitPrice: 190, parkFee: 12 },
+                "NIGHT DRIVE WITH DINNER CRUISE": { unitPrice: 160, parkFee: 10 },
+                "AM/PM GAME DRIVE": { unitPrice: 81, parkFee: 18 },
+                "SAFARI GAME WALKS": { unitPrice: 132, parkFee: 18 },
+                "FULL DAY CHOBE (BOTSWANA)": { unitPrice: 175, parkFee: 15 },
+                "ELEPHANT BACK SAFARI": { unitPrice: 160, parkFeeIncluded: true },
+                "LION & CHEETAH ENCOUNTER": { unitPrice: 80, parkFee: 15 },
+                "ELEPHANT ART OF AFRICA": { unitPrice: 140, parkFee: 10 },
+                "WILDLIFE SANCTUARY AND CROCODILE RANCHING": { unitPrice: 40, parkFeeIncluded: true },
+                "BAMBA TRAM (RAIL EXPERIENCE)": { unitPrice: 35, parkFeeIncluded: true },
+                "ZAMBEZI GAME DRIVE": { unitPrice: 50, parkFee: 10 },
+                "HWANGE GAME DRIVE (FULL DAY)": { unitPrice: 220, parkFee: 20 },
+                "FEAST OF THE BEAST": { unitPrice: 90, parkFee: 10 },
+                "BRIDGE TOUR": { unitPrice: 75, parkFeeIncluded: true },
+                "AFRICAN VILLAGE TOUR": { unitPrice: 55, parkFeeIncluded: true },
+                "GUIDED TOUR OF THE FALLS": { unitPrice: 35, parkFee: 10 },
+                "VIC FALLS BIKE TOUR": { unitPrice: 50, parkFeeIncluded: true },
+                "HOME HOSTED MEALS": { unitPrice: 30, parkFeeIncluded: true },
+                "White Water Rafting": { unitPrice: 130, parkFee: 3 },
+                "Gorge Swing": { unitPrice: 110, parkFee: 3 },
+                "Tandem Gorge Swing": { unitPrice: 160, parkFee: 3 },
+                "Flying Fox": { unitPrice: 55, parkFee: 3 },
+                "Canopy Tour": { unitPrice: 65, parkFee: 3 },
+                "Bungee Jump (Solo)": { unitPrice: 180, parkFee: 15 },
+                "Bridge Swing": { unitPrice: 180, parkFee: 15 },
+                "Tandem Bridge Slide": { unitPrice: 70, parkFee: 15 },
+                "Elephant Back Safari": { unitPrice: 160, parkFeeIncluded: true },
+                "Lion & Cheetah Encounter": { unitPrice: 80, parkFee: 15 },
+                "Elephant Art of Africa": { unitPrice: 140, parkFee: 10 },
+                "Wildlife Sanctuary & Crocodile Ranching": { unitPrice: 40, parkFeeIncluded: true },
+                "Bamba Tram (Rail Experience)": { unitPrice: 35, parkFeeIncluded: true },
+                "Full Day Chobe (Botswana)": { unitPrice: 175, parkFee: 15 },
+                "Zambezi Game Drive": { unitPrice: 50, parkFee: 10 },
+                "Zambezi Game Drive (Full Day)": { unitPrice: 220, parkFee: 20 },
+                "Feast of the Beast": { unitPrice: 90, parkFee: 10 },
+                "Night Drive with Dinner Cruise": { unitPrice: 160, parkFee: 10 },
+                "Boma Dinner": { unitPrice: 70, parkFeeIncluded: true },
+                "African Village Tour": { unitPrice: 55, parkFeeIncluded: true },
+                "Sunset Cruise": { unitPrice: 60, parkFee: 12 },
+                "Breakfast Cruise": { unitPrice: 60, parkFee: 12 },
+                "Lunch Cruise": { unitPrice: 80, parkFee: 12 },
+                "Dinner Cruise": { unitPrice: 95, parkFee: 12 },
+                "Bird Watching": { unitPrice: 45, parkFee: 12 },
+                "Fishing (3 Hours)": { unitPrice: 110, parkFee: 12 },
+                "Fishing (Half Day)": { unitPrice: 190, parkFee: 12 },
+                "Jetboat (2 Hours)": { unitPrice: 130, parkFee: 12 },
+                "Guided Tour of the Falls": { unitPrice: 35, parkFee: 10 },
+                "Vic Falls Bike Tour": { unitPrice: 50, parkFeeIncluded: true },
+                "Livingstone Island Tour": { unitPrice: 130, parkFeeIncluded: true },
+                "Bridge Tour": { unitPrice: 75, parkFeeIncluded: true },
+                "Helicopter Flight – 13 mins (Zimbabwe)": { unitPrice: 160, parkFee: 15 },
+                "Helicopter Flight – 15 mins (Zambia)": { unitPrice: 225, parkFee: 15 },
+                "Helicopter Flight – 22 mins": { unitPrice: 250, parkFee: 15 },
+                "Helicopter Flight – 25 mins": { unitPrice: 300, parkFee: 15 }
+            };
 
             let selectedServices = [];
             let visitorCount = 1;
@@ -657,26 +758,35 @@
                 return Number.isFinite(parsedValue) && parsedValue > 0 ? parsedValue : 1;
             }
 
+            function parseBoolean(value) {
+                return value === true || value === "true";
+            }
+
             function normalizeService(service) {
-                const isAirportTransfer = service.name === AIRPORT_TRANSFER_NAME;
-                const unitPrice = isAirportTransfer
-                    ? 15
-                    : Number(service.unitPrice ?? service.price ?? 0);
-                const minPassengers = isAirportTransfer
-                    ? 2
-                    : sanitizeVisitorCount(service.minPassengers || 1);
+                const name = SERVICE_ALIASES[service.name] || service.name;
+                const defaults = SERVICE_DEFAULTS[name] || {};
+                const unitPrice = Number(defaults.unitPrice ?? service.unitPrice ?? service.price ?? 0);
+                const minPassengers = sanitizeVisitorCount(defaults.minPassengers ?? service.minPassengers ?? 1);
+                const parkFee = Number(defaults.parkFee ?? service.parkFee ?? 0);
+                const parkFeeIncluded = parseBoolean(defaults.parkFeeIncluded ?? service.parkFeeIncluded ?? false);
 
                 return {
-                    name: service.name,
+                    name,
                     unitPrice,
-                    minPassengers
+                    minPassengers,
+                    parkFee,
+                    parkFeeIncluded
                 };
             }
 
             function loadServicesFromStorage() {
-                return JSON.parse(sessionStorage.getItem(STORAGE_KEY_SERVICES) || "[]")
+                const normalizedServices = JSON.parse(sessionStorage.getItem(STORAGE_KEY_SERVICES) || "[]")
                     .filter(service => service && service.name)
                     .map(normalizeService);
+
+                return normalizedServices.filter((service, index, allServices) =>
+                    allServices.findIndex(existingService => existingService.name === service.name) === index
+                );
             }
 
             function formatPrice(price) {
@@ -687,8 +797,20 @@
                 return Math.max(guests, service.minPassengers || 1);
             }
 
-            function getServiceTotal(service, guests = visitorCount) {
+            function getAdditionalParkFee(service) {
+                return service.parkFeeIncluded ? 0 : Number(service.parkFee || 0);
+            }
+
+            function getBaseServiceTotal(service, guests = visitorCount) {
                 return service.unitPrice * getPassengerQuantity(service, guests);
+            }
+
+            function getParkFeeTotal(service, guests = visitorCount) {
+                return getAdditionalParkFee(service) * getPassengerQuantity(service, guests);
+            }
+
+            function getServiceTotal(service, guests = visitorCount) {
+                return getBaseServiceTotal(service, guests) + getParkFeeTotal(service, guests);
             }
 
             function getTotalPrice(services = selectedServices, guests = visitorCount) {
@@ -700,6 +822,8 @@
                     name: service.name,
                     unitPrice: service.unitPrice,
                     minPassengers: service.minPassengers,
+                    parkFee: service.parkFee,
+                    parkFeeIncluded: service.parkFeeIncluded,
                     price: getServiceTotal(service)
                 }));
 
@@ -725,9 +849,21 @@
 
                 servicesList.innerHTML = selectedServices.map(service => {
                     const quantity = getPassengerQuantity(service);
+                    const feeNote = service.parkFeeIncluded
+                        ? "park fee included"
+                        : getAdditionalParkFee(service) > 0
+                            ? `mandatory park fee ${formatPrice(service.parkFee)} x ${quantity} visitor${quantity === 1 ? "" : "s"} added`
+                            : "";
                     const minimumNote = service.minPassengers > visitorCount
                         ? `, minimum ${service.minPassengers} passengers billed`
                         : "";
+                    const detailParts = [
+                        `${formatPrice(service.unitPrice)} x ${quantity} visitor${quantity === 1 ? "" : "s"}${minimumNote}`
+                    ];
+
+                    if (feeNote) {
+                        detailParts.push(feeNote);
+                    }
 
                     return `
                         <li class="selected-item">
@@ -736,7 +872,7 @@
                                 <span class="selected-item-price">${formatPrice(getServiceTotal(service))}</span>
                             </div>
                             <div class="selected-item-bottom">
-                                <span class="selected-item-meta">${formatPrice(service.unitPrice)} x ${quantity} visitor${quantity === 1 ? "" : "s"}${minimumNote}</span>
+                                <span class="selected-item-meta">${detailParts.join(" + ")}</span>
                                 <span class="selected-item-total">Line total</span>
                             </div>
                         </li>
